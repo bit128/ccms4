@@ -1,0 +1,87 @@
+/* =================================================================== */
+/* Boxed Layout
+====================================================================== */
+
+	body {
+		background:/* url(../images/bg/noise.png) */url(../images/whole-bg.jpg) no-repeat bottom center fixed;
+		font: 12px  Arial, sans-serif;
+		color: #666;
+		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+		-webkit-text-size-adjust: 100%;
+		overflow-x: hidden;
+	 }
+	 
+	#wrapper {
+		background: #fff;
+		-webkit-box-shadow:  0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+		box-shadow:  0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+		width: 1020px;
+		padding: 40px 35px 35px 35px;
+		margin: 50px auto 0 auto;
+	}
+	
+	#footer {
+		background: #303030;
+		width: 1020px;
+		padding: 15px 35px 0px 35px;
+		margin: 0 auto 50px auto;
+	}
+
+
+/* Smaller than standard 1029 (devices and browsers)
+====================================================================== */
+@media only screen and (max-width: 1029px) {
+
+	#wrapper {
+		margin: 0 auto;
+		padding: 25px 0 30px 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		width: 100%;
+	}
+	
+	body {
+		background: #fff
+	}
+	
+	#footer {
+		margin: 0 auto;
+		padding: 15px 0 0 0;
+		width: 100% !important;
+	}
+	
+}
+	
+/* Tablet Portrait (devices and browsers)
+====================================================================== */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+	#footer {
+		padding: 10px 0 0 0;
+	}
+
+}
+
+/* All Mobile Sizes (devices and browser)
+====================================================================== */
+@media only screen and (max-width: 767px) {
+
+	#wrapper {
+		margin: 0 auto;
+		padding: 15px 0 30px 0;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		width: 100%;
+	}
+	
+	body {
+		background: #fff
+	}
+	
+	#footer {
+		margin: 0 auto;
+		padding: 15px 0 0 0;
+		width: 100% !important;
+	}
+
+}

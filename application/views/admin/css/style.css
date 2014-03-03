@@ -1,0 +1,31 @@
+body { padding-top: 60px; padding-bottom: 40px; font-family: "微软雅黑"; background: #fafafa;}
+.banner { margin-top: -9px;}
+.container-fluid { margin: 0 auto; max-width:980px;}
+.thumbnail { background: #fff; border: none; margin-bottom: 10px;}
+.tb-nb { border: none;}
+#menu a,.tags a{margin-bottom: 5px;}
+.nav li a {color:#666;}
+.navbar .nav .active a{ color: #009fff;}
+.keywords { background: url('../img/banner_bg.png') repeat; text-align: center; padding: 20px 0 10px; border:2px solid white;}
+.keywords a { margin: 5px; color: #333;}
+.navbar-text .btn {margin-top: 0;}
+.dashed{border-bottom:1px dashed #ccc; margin: 5px 0 5px;}
+.bottom {margin-bottom: 10px;}
+.f20 { font-size: 20px; color:#333;}
+.theme a{color: #666; padding: 6px;}
+.theme a:hover {color: #007fff}
+.f_big { font-size: 28px;}
+.f_medium { font-size: 21px;}
+.f_small {font-size: 16px;}
+.f_mini {font-size: 13px;}
+.f_tiny {font-size: 12px;}
+/*
+.hf{ font-size:28px; font-weight: bold; padding-top: 10px;}
+.f1 { font-size:21px; font-weight: bold; padding-top: 5px;}
+.f2 { font-size:16px; padding-top: 25px;}
+
+
+.thumbnail{ margin-bottom: 5px;}
+.dizu { position: absolute; top:78px; background: #fff; width: 100px; filter: alpha(opacity=70); opacity: 0.7; text-align: center;}
+.subtit{border-bottom:1px dashed #ccc; padding-bottom:5px;}
+.dashed{border-bottom:1px dashed #ccc; margin-top: 10px;}*/
