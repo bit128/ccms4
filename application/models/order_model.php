@@ -320,6 +320,36 @@ class Order_model extends CI_Model {
 	}
 
 	/**
+	* 变更订单状态
+	* ======
+	* @param $od_id 	订单id
+	* @param $od_status 订单状态
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function changeOrderStatus($od_id, $od_status)
+	{
+		return $this->db->where('od_id', $od_id)
+			->update('t_order', array('od_status'=>$od_status));
+	}
+
+	/**
+	* 变更订单价格
+	* ======
+	* @param $od_id 	订单id
+	* @param $od_price 	订单价格
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function changeOrderPrice($od_id, $od_price)
+	{
+		return $this->db->where('od_id', $od_id)
+			->update('t_order', array('od_price'=>$od_price));
+	}
+
+	/**
 	* 获取订单列表
 	* ======
 	* @param $offset 	起始位置

@@ -44,6 +44,7 @@
                       <?php } else { ?>
                       <a class="btn btn-mini btn-success admin_lock" data-val="1">启用</a>
                       <?php } ?>
+                      <a class="btn btn-mini btn-danger admin_cpwd">重置</a>
                       <a class="btn btn-mini admin_delete">删除</a>
                     </td>
                   </tr>
@@ -77,7 +78,19 @@
       <?php include '_footer.php'; ?>
 
     </div>
-
+    <!-- 重置密码框 -->
+    <div id="cpwd_box" class="popover bottom">
+      <div class="arrow"></div>
+      <div class="popover-content">
+        <div class="input-prepend input-append">
+          <input type="password" class="input-small" placeholder="输入新密码" id="new_password">
+          <input type="hidden" id="cache_id" value="">
+          <a class="btn btn-success" id="change_pwd">变更</a>
+          <a class="btn" id="change_cancel">取消</a>
+        </div>
+      </div>
+    </div>
+    <!-- 重置密码框 -->
   </body>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -160,6 +173,35 @@ $(document).ready(function(){
       });
       handle.remove();
     }
+  });
+  /*重置密码框*/
+  $('#admin_list').on('click', '.admin_cpwd', function(e){
+    $('#cpwd_box').css('top', e.pageY+10).css('left', e.pageX-120).show();
+    $('#cache_id').val($(this).parents('tr').find('td:eq(0)').text());
+    $('#new_password').focus();
+  });
+  $('#change_cancel').on('click', function(){
+    $('#cpwd_box').hide();
+    $('#new_password').val('');
+    $('#cache_id').val('');
+  });
+  /*变更管理员密码*/
+  $('#change_pwd').on('click', function(){
+    var am_id = $('#cache_id').val();
+    var new_password = $('#new_password').val();
+    $.ajax({
+      type: 'POST',
+      url: '/index.php/admin/changePassword',
+      data: {am_id: am_id, am_password: new_password},
+      success: function(data){
+        if(data == '1'){
+          alert('管理员密码变更成功！');
+        }
+        $('#cpwd_box').hide();
+        $('#new_password').val('');
+        $('#cache_id').val('');
+      }
+    });
   });
 });
 </script>

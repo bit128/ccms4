@@ -156,6 +156,18 @@ class Admin_model extends CI_Model {
 	}
 
 	/**
+	* 变更管理员密码
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function changePassword($am_id, $am_password)
+	{
+		$data = array('am_password' => md5(trim($am_password)));
+		return $this->update($am_id, $data);
+	}
+
+	/**
 	* 变更管理员权限
 	* ======
 	* @param $am_id 	管理员id

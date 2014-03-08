@@ -105,6 +105,20 @@ class Admin extends CI_Controller {
 	}
 
 	/**
+	* 变更管理员密码
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function changePassword()
+	{
+		$am_id = $this->input->post('am_id');
+		$am_password = $this->input->post('am_password');
+
+		echo $this->admin->changePassword($am_id, $am_password);
+	}
+
+	/**
 	* 删除管理员
 	* ======
 	* @author 洪波

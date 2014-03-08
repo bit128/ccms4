@@ -432,6 +432,26 @@ class Home extends CI_Controller {
 	}
 
 	/**
+	* 获取内容快捷列表
+	* ======
+	* @param $cn_id 	栏目id
+	* @param $count 	获取数量
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function getContentExpress($cn_id, $limit)
+	{
+		$this->load->model('Content_model', 'content');
+		$condition = array(
+			'cn_id' => $cn_id,
+			'ct_status' => 2
+			);
+		$result = $this->content->getList(0, $limit, $condition);
+		echo json_encode($result);
+	}
+
+	/**
 	* 获取内容详情
 	* ======
 	* @param $ct_id 	内容id

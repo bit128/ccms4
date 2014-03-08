@@ -29,6 +29,7 @@
             <th>总价</th>
             <th>下单时间</th>
             <th>发货时间</th>
+            <th>状态</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -40,7 +41,9 @@
             <td><?php echo $v['od_price']; ?></td>
             <td><small><?php echo date('Y-m-d H:i:s', $v['od_ctime']); ?></small></td>
             <td><small><?php echo date('Y-m-d H:i:s', $v['od_stime']); ?></small></td>
-            <td></td>
+            <td><small><?php echo $v['od_status'] == '0' ?
+              '<span class="text-error">待处理</span>' : '<span class="text-success">已完成</span>'; ?></small></td>
+            <td><a class="btn btn-mini" href="<?php echo site_url('order/orderDetail'), '/', $v['od_id']; ?>">查看详情</a></td>
           </tr>
           <?php } ?>
         </tbody>

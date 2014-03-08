@@ -88,23 +88,22 @@
 		<!-- Tabs Content -->
 		<div class="tabs-container">
 			<div class="tab-content" id="tab1">
-            <ul class="links-list-alt">
+            <ul class="links-list-alt" id="ne_1">
 				<li><a href="List-content.html"><span>2013-03-16</span> 九华阁香港贸易博览会展会通知</a></li>
 				<li><a href="List-content.html"><span>2013-03-16</span> 有关紫檀木原材料价格上涨问题</a></li>
                 <li><a href="List-content.html"><span>2013-03-16</span> 有关紫檀木原材料价格上涨问题</a></li>
 				<li><a href="List-content.html"><span>2013-03-16</span> 2013年春节放假通知</a></li>
-               
 			</ul>
-           <ul class="plus_list"> <li><a href="List-menu.html">更多信息</a></li></ul>
+           <ul class="plus_list"> <li><a href="<?php echo site_url('home/content'); ?>/0/news/530029c52bcf6">更多信息</a></li></ul>
             </div>
 			<div class="tab-content" id="tab2">
-            <ul class="links-list-alt">
+            <ul class="links-list-alt" id="ne_2">
 				<li><a href="List-content.html"><span>2013-03-16</span> 绝对不可多得，仅此一串，极品小叶紫檀，只展不卖</a></li>
                 <li><a href="List-content.html"><span>2013-03-16</span> 有关最近科檀以此充好的辨别方法</a></li>
                 <li><a href="List-content.html"><span>2013-03-16</span> 有关最近科檀以此充好的辨别方法</a></li>
                 <li><a href="List-content.html"><span>2013-03-16</span> 原料出售，品种繁多，具体点我来看。</a></li>
 			</ul>
-           <ul class="plus_list"> <li><a href="List-menu.html">更多信息</a></li></ul>
+           <ul class="plus_list"> <li><a href="<?php echo site_url('home/content'); ?>/0/news/530029d5db453">更多信息</a></li></ul>
             </div>
             
 		</div>
@@ -184,8 +183,26 @@
 <?php include '_footer.php'; ?>
 <!-- Footer / End -->
 <script type="text/javascript" src="<?php echo VIEWPATH; ?>/home/js/product_express.js"></script>
+<script type="text/javascript" src="<?php echo VIEWPATH; ?>/home/js/news_express.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	(function() {
+		var $tabsNav    = $('.tabs-nav'),
+			$tabsNavLis = $tabsNav.children('li'),
+			$tabContent = $('.tab-content');
+		$tabsNav.each(function() {
+			var $this = $(this);
+			$this.next().children('.tab-content').stop(true,true).hide().first().show();
+			$this.children('li').first().addClass('active').stop(true,true).show();
+		});
+		$tabsNavLis.on('click', function(e) {
+			var $this = $(this);
+			$this.siblings().removeClass('active').end().addClass('active');
+			$this.parent().next().children('.tab-content').stop(true,true).hide().siblings( $this.find('a').attr('href') ).fadeIn();
+			e.preventDefault();
+		});
+	})();
+	//热销产品
 	var express = new ProductExpress('pd_status = 1', 4, 'pd_click', 'desc', $('#pd_hot'));
 	express.getList(function(d){
 		return '<div class="four columns"><div class="picture"><a class="pd_image" href="/index.php/home/item/'
@@ -193,6 +210,14 @@ $(document).ready(function(){
 			+'<div class="item-description"><h5><a href="/index.php/home/item/'+d.pd_id+'">'+d.pd_name
 			+'</a></h5><p><a href="javascript:;" class="button color">询价购买</a> '
 			+'<a href="/index.php/home/item/'+d.pd_id+'" class="button light">查看详细</a></p></div></div>';
+	});
+	//公司新闻
+	new NewsExpress($('#ne_1'), '530029c52bcf6', 4).getList(function(d){
+		return '<li><a href="/index.php/home/content_detail/news/'+d.ct_id+'">'+d.ct_title+'</a></li>';
+	});
+	//产品动态
+	new NewsExpress($('#ne_2'), '530029d5db453', 4).getList(function(d){
+		return '<li><a href="/index.php/home/content_detail/news/'+d.ct_id+'">'+d.ct_title+'</a></li>';
 	});
 });
 </script>

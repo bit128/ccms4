@@ -53,6 +53,7 @@
               </p>
               <p>
                 <label>状态：</label>
+                <input type="radio" name="ct_status" value="2" <?php if($content['ct_status'] == 2) echo 'checked';?>> 推荐
                 <input type="radio" name="ct_status" value="1" <?php if($content['ct_status'] == 1) echo 'checked';?>> 公开
                 <input type="radio" name="ct_status" value="0" <?php if($content['ct_status'] == 0) echo 'checked';?>> 隐藏
               </p>

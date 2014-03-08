@@ -39,7 +39,12 @@
                 <td><?php echo $v['ct_id']; ?></td>
                 <td><a href="<?php echo site_url('content/contentDetail/'.$cn_id.'/'.$v['ct_id']);?>"><?php echo $v['ct_title']; ?></a></td>
                 <td><?php echo date('Y-m-d', $v['ct_ctime']); ?></td>
-                <td><?php echo $v['ct_status'] == 1 ? '<span class="text-success">公开</span>' : '<span class="text-warning">隐藏</span>'; ?></td>
+                <td><?php switch($v['ct_status']){
+                  case 0: echo '<span class="text-warning">隐藏</span>'; break;
+                  case 1: echo '<span class="text-success">公开</span>'; break;
+                  case 2: echo '<span class="text-info">推荐</span>'; break;
+                }?>
+                </td>
                 <td>
                   <a class="btn btn-mini" href="<?php echo site_url('content/contentDetail/'.$cn_id.'/'.$v['ct_id']);?>">修改</a>
                   <a class="btn btn-mini content_delete">删除</a>

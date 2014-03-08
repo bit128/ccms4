@@ -54,6 +54,25 @@ class Order extends CI_Controller {
 		}
 	}
 
+	public function orderDetail($od_id)
+	{
+		if($this->admin->validate(32))
+		{
+			$orders = $this->order->getOrder($od_id);
+			if($orders)
+			{
+				$data = array(
+					'orders' => $orders
+					);
+				$this->load->view('admin/v_order_detail', $data);
+			}
+		}
+		else
+		{
+			echo '权限不足';
+		}
+	}
+
 //==================================================
 
 	/**
@@ -173,6 +192,67 @@ class Order extends CI_Controller {
 			{
 				echo '[]';
 			}
+		}
+	}
+
+	/**
+	* 变更订单状态
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function changeOrderStatus()
+	{
+		if($this->admin->validate(32))
+		{
+			$od_id = $this->input->post('od_id');
+			$od_status = $this->input->post('od_status');
+
+			echo $this->order->changeOrderStatus($od_id, $od_status);
+		}
+		else
+		{
+			echo -1;
+		}
+	}
+
+	/**
+	* 变更订单价格
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function changeOrderPrice()
+	{
+		if($this->admin->validate(32))
+		{
+			$od_id = $this->input->post('od_id');
+			$od_price = $this->input->post('od_price');
+
+			echo $this->order->changeOrderPrice($od_id, $od_price);
+		}
+		else
+		{
+			echo -1;
+		}
+	}
+
+	/**
+	* 发送订单邮件回复
+	* ======
+	* @author 洪波
+	* @version 14.03.08
+	*/
+	public function sendMessage()
+	{
+		if($this->admin->validate(32))
+		{
+			$od_id = $this->input->post('od_id');
+			$message = $this->input->post('message');
+		}
+		else
+		{
+			echo -1;
 		}
 	}
 }
