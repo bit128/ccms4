@@ -146,7 +146,7 @@ class Product_model extends CI_Model {
 		$result = $this->db->select($fields)
 			->where($condition)
 			->from('t_product')
-			->limit($limit, $order)
+			->limit($limit, $offset)
 			->order_by($order)
 			->get()
 			->result_array();
@@ -188,6 +188,10 @@ class Product_model extends CI_Model {
 	{
 		//删除商品图片
 		$this->deleteImageMore($pd_id);
+		//删除常见问题
+		$this->deleteQuestionMore($pd_id);
+		//删除商品附件
+		$this->deleteAnnexMore($pd_id);
 		//删除商品数据
 		return $this->db->where('pd_id', $pd_id)
 			->delete('t_product');
@@ -229,7 +233,7 @@ class Product_model extends CI_Model {
 		return $this->db->query($sql);
 	}
 
-//===============================
+//=============================== 图片
 
 	/**
 	* 添加商品图片
@@ -386,6 +390,211 @@ class Product_model extends CI_Model {
 		//删除图片数据
 		$this->db->where($condition)
 			->delete('t_product_image');
+	}
+
+//================================ 常见问题
+
+	/**
+	* 添加商品常见问题
+	* ======
+	* @param $data 	常见问题数据
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function addQuestion($data)
+	{
+		$data['pdq_id'] = uniqid();
+		return $this->db->insert('t_product_question', $data);
+	}
+
+	/**
+	* 更新常见问题
+	* ======
+	* @param $pdq_id 	问题id
+	* @param $data 		问题数据
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function updateQuestion($pdq_id, $data)
+	{
+		return $this->db->where('pdq_id', $pdq_id)
+			->update('t_product_question', $data);
+	}
+
+	/**
+	* 变更常见问题状态
+	* ======
+	* @param $pdq_id 		问题id
+	* @param $pdq_status 	问题状态
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function changeQuestionStatus($pdq_id, $pdq_status)
+	{
+		return $this->updateQuestion($pdq_id, array('pdq_status'=>$pdq_status));
+	}
+
+	/**
+	* 获取常见问题列表
+	* ======
+	* @param $pd_id 		商品id
+	* @param $pdq_status 	常见问题状态
+	* ======
+	* @author 洪波 
+	* @version 14.03.23
+	*/
+	public function getQuestionList($pd_id, $pdq_status = '-1')
+	{
+		$condition = array(
+			'pd_id' => $pd_id
+			);
+		if($pdq_status != '-1')
+		{
+			$condition['pdq_status'] = $pdq_status;
+		}
+
+		return $this->db->get_where('t_product_question', $condition)
+			->result_array();
+	}
+
+	/**
+	* 删除单个常见问题
+	* ======
+	* @param $pdq_id 	商品id
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function deleteQuestion($pdq_id)
+	{
+		return $this->db->where('pdq_id', $pdq_id)
+			->delete('t_product_question');
+	}
+
+	/**
+	* 删除商品常见问题
+	* ======
+ 	* @param $pd_id 商品id
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function deleteQuestionMore($pd_id)
+	{
+		return $this->db->where('pd_id', $pd_id)
+			->delete('t_product_question');
+	}
+
+//=========================== 资料
+
+	/**
+	* 添加商品附件
+	* ======
+	* @param $data 	资料数据
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function addAnnex($data)
+	{
+		$data['pda_id'] = uniqid();
+		$data['pda_time'] = time();
+		return $this->db->insert('t_product_annex', $data);
+	}
+
+	/**
+	* 获取商品附件列表
+	* ======
+	* @param $offset 		起始位置
+	* @param $limit 		查询行数
+	* @param $pd_id 	 	商品id
+	* @param $pda_status 	附件状态
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function getAnnexList($offset, $limit, $pd_id, $pda_status = '-1')
+	{
+		$condition = array('pd_id' => $pd_id);
+		if($pda_status != '-1')
+		{
+			$condition['pda_status'] = $pda_status;
+		}
+		//统计数量
+		$count = $this->db->select('pda_id')
+			->get_where('t_product_annex', $condition)
+			->num_rows();
+		//获取数据
+		$result = $this->db->where($condition)
+			->from('t_product_annex')
+			->limit($limit, $offset)
+			->order_by('pda_time', 'desc')
+			->get()
+			->result_array();
+		foreach($result as $k => $v)
+		{
+			$result[$k]['pda_time'] = date('Y-m-d', $v['pda_time']);
+		}
+
+		return array('count' => $count, 'result' => $result);
+	}
+
+	/**
+	* 变更商品附件状态
+	* ======
+	* @param $pda_id 		附件id
+	* @param $pda_status 	附件状态
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function changeAnnexStatus($pda_id, $pda_status)
+	{
+		return $this->db->where('pda_id', $pda_id)
+			->update('t_product_annex', array('pda_status' => $pda_status));
+	}
+
+	/**
+	* 删除单个附件
+	* ======
+	* @param $pda_id 	商品附件id
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function deleteAnnex($pda_id)
+	{
+		$condition = "pda_id = '{$pda_id}'";
+		//获取附件信息
+		$annex = $this->db->select('pda_src')
+			->get_where('t_product_annex', $condition)
+			->row();
+		//如果附件存在
+		if($annex)
+		{
+			//删除附件文件
+			@unlink('./uploads/product/' . $annex->pda_src);
+			//删除附件数据
+			$this->db->where($condition)
+				->delete('t_product_annex');
+		}
+	}
+
+	/**
+	* 删除商品附件
+	* ======
+	* @param $pd_id 商品id
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function deleteAnnexMore($pd_id)
+	{
+		return $this->db->where('pd_id', $pd_id)
+			->delete('t_product_annex');
 	}
 
 }

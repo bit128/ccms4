@@ -60,19 +60,7 @@
 <!-- Sidebar
 ================================================== -->
 <div class="four columns">
-	<!-- Categories -->
-	<div class="widget-alt">
-		<div class="headline no-margin">
-		  <h4>彩网科技欢迎您</h4></div>
-		 
-         <!--普通用户状态--><p><i class="mini-ico-user"></i> jiangjiefei@hotmail.com</p>
-         <!--VIP用户状态--><ul class="star_list"><li>VIP - jiangjiefei@hotmail.com </li></ul>
-         
-	</div>
 
-
-	
-	<!-- Categories -->
 	<?php include '_my.php'; ?>
 	
 </div>
@@ -96,7 +84,7 @@
 					<a href="<?php echo site_url('home/item'), '/' , $v['pd_id'];?>" target="_blank" class="pd_image" data-val="<?php echo $v['pd_id']; ?>"></a>
             		<a href="<?php echo site_url('home/item'), '/' , $v['pd_id'];?>" target="_blank"><?php echo $v['pd_name']; ?></a>
             	</td>
-				<td><?php echo '颜色：',$v['st_colour'],' 尺寸：',$v['st_size'], ' 规格：',$v['st_unit']; ?></td>
+				<td><?php echo $v['st_name']; ?></td>
 				<td>
 					<a href="javascript:;" class="add_cart button color" data-val="<?php echo $v['sp_id']; ?>">添加到询价单</a>
 					<a href="javascript:;" class="cl_remove button" data-val="<?php echo $v['sp_id']; ?>">删除</a>

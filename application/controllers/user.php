@@ -124,7 +124,7 @@ class User extends CI_Controller {
 		$user_nick = $this->input->post('user_nick');
 		if($this->user->checkAccount($user_account))
 		{
-			echo $this->user->register($user_account, $user_password, $user_nick, 2);
+			echo $this->user->register($user_account, $user_password, $user_nick, 1);
 		}
 		else
 		{
@@ -207,13 +207,13 @@ class User extends CI_Controller {
 	* @author 洪波
 	* @version 13.10.22
 	*/
-	// public function changeStatus()
-	// {
-	// 	$user_id = $this->input->post('user_id');
-	// 	$user_status = $this->input->post('user_status');
+	public function changeStatus()
+	{
+		$user_id = $this->input->post('user_id');
+		$user_status = $this->input->post('user_status');
 
-	// 	echo $this->user->changeStatus($user_id, $user_status);
-	// }
+		echo $this->user->changeStatus($user_id, $user_status);
+	}
 
 	/**
 	* 用户变更密码

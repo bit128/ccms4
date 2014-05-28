@@ -96,16 +96,17 @@
 	        <div class="notification success closeable">
 				<p><span>*</span> 密码已成功送至您的登录邮箱，请查看并及时修改！</p>
 			</div>-->
+			<div id="f_box"></div>
             <form>
 				
 				<div class="field">
 					<label>请输入您的登录邮箱地址以便接受新密码:  </label>
-					<input type="text" name="email" class="text" />
+					<input type="text" name="email" id="f_account" />
 				</div>
                 
                
 				<div class="field">
-					<input type="button" id="send" value="提交" />
+					<input type="button" id="find_pwd" value="提交" />
 					<div class="loading"></div>
 				</div>
 				
@@ -118,14 +119,6 @@
 	
 	<div class="eight columns">
 		<div class="headline no-margin"><h3>注册新账户</h3></div>
-		<!--
-        <div class="notification error closeable">
-			<p><span>*</span>  请填写邮箱.</p>
-        </div>
-        <div class="notification error closeable">
-			<p><span>*</span> 前后密码输入不一致，请重新输入.</p>
-		</div>-->
-		<!-- Form -->
 		<div id="r_box"></div>
 		<div id="contact-form">
 			<form id="r_form">
@@ -239,6 +232,26 @@ $(document).ready(function(){
 					}else{
 						message(handle, 'error', '<p><span>*</span>  邮箱已经被使用，请更换一个.</p>');
 					}
+				}
+			});
+		}
+	});
+	/*find password*/
+	$('#find_pwd').on('click', function(){
+		var handle = $('#f_box');
+		var account = $('#f_account').val();
+		if(account == ''){
+			message(handle, 'error', '<p><span>*</span>  请填写邮箱.</p>');
+		}else if(! /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.exec(account)){
+			message(handle, 'error', '<p><span>*</span>  邮箱格式不正确.</p>');
+		}else{
+			$.ajax({
+				type: 'POST',
+				url: '/index.php/home/findPassword',
+				data: {account: account},
+				success: function(data){
+					message(handle, 'warning', '<p><span>*</span> '+data+'</p>');
+					$('#f_account').val('');
 				}
 			});
 		}

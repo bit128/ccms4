@@ -101,7 +101,7 @@ class Product extends CI_Controller {
 		}
 	}
 
-//=================================
+//================================= 产品逻辑
 
 	/**
 	* 添加产品数据
@@ -241,8 +241,6 @@ class Product extends CI_Controller {
 		{
 			//删除商品
 			$this->product->delete($pd_id);
-			//删除图片
-			$this->product->deleteImageMore($pd_id);
 		}
 	}
 
@@ -258,6 +256,8 @@ class Product extends CI_Controller {
 	{
 		echo $this->product->click($pd_id);
 	}
+
+//=================================== 产品图片逻辑
 
 	/**
 	* 添加商品图片
@@ -310,6 +310,192 @@ class Product extends CI_Controller {
 		$op = $this->input->post('op');
 
 		echo json_encode($this->product->sortImage($pdi_name, $op));
+	}
+
+//========================== 产品常见问题逻辑
+
+	/**
+	* 添加常见问题
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function addQuestion()
+	{
+		if($pd_id = $this->input->post('pd_id'))
+		{
+			$pdq_question = $this->input->post('pdq_question');
+			$pdq_answer = $this->input->post('pdq_answer');
+			$pdq_status = $this->input->post('pdq_status');
+
+			$data = array(
+				'pd_id' => $pd_id,
+				'pdq_question' => $this->input->post('pdq_question'),
+				'pdq_answer' => $this->input->post('pdq_answer'),
+				'pdq_status' => $this->input->post('pdq_status')
+				);
+
+			echo $this->product->addQuestion($data);
+		}
+	}
+
+	/**
+	* 更新常见问题
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function updateQuestion()
+	{
+		if($pdq_id = $this->input->post('pdq_id'))
+		{
+			$data = array(
+				'pdq_question' => $this->input->post('pdq_question'),
+				'pdq_answer' => $this->input->post('pdq_answer')
+				);
+			echo $this->product->updateQuestion($pdq_id, $data);
+		}
+	}
+
+	/**
+	* 变更常见问题状态
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function changeQuestionStatus()
+	{
+		if($pdq_id = $this->input->post('pdq_id'))
+		{
+			$pdq_status = $this->input->post('pdq_status');
+			echo $this->product->changeQuestionStatus($pdq_id, $pdq_status);
+		}
+	}
+
+	/**
+	* 获取常见问题列表
+	* =======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function getQuestionList()
+	{
+		if($pd_id = $this->input->post('pd_id'))
+		{
+			$pdq_status = $this->input->post('pdq_status');
+			echo json_encode($this->product->getQuestionList($pd_id, $pdq_status));
+		}
+	}
+
+	/**
+	* 删除常见问题
+	* ======
+	* @author 洪波
+	* @version 14.03.23
+	*/
+	public function deleteQuestion()
+	{
+		if($pdq_id = $this->input->post('pdq_id'))
+		{
+			echo $this->product->deleteQuestion($pdq_id);
+		}
+	}
+
+//============================= 产品资料逻辑
+
+	/**
+	* 添加商品附件
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function addAnnex()
+	{
+		if($pd_id = $this->input->post('pd_id'))
+		{
+			$data = array(
+				'pda_name' => $this->input->post('pda_name'),
+				'pda_src' => $this->input->post('pda_src'),
+				'pda_type' => $this->input->post('pda_type'),
+				'pda_status' => $this->input->post('pda_status')
+				);
+			$data['pd_id'] = $pd_id;
+
+			echo $this->product->addAnnex($data);
+		}
+	}
+
+	/**
+	* 上传文件
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function uploadFile()
+	{
+		$config = array(
+        	'upload_path' => './uploads/product/',
+        	'allowed_types' => 'zip|rar|txt|doc|xls|ppt|pdf|gif|jpg|png',
+        	'file_name' => uniqid()
+        	);
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('annex_file'))
+        {
+            $data = $this->upload->data();
+            echo json_encode(array('path'=>$data['file_name'], 'type'=>$data['file_type'], 'error'=>0));
+        }
+        else
+        {
+            print_r($this->upload->display_errors());
+        }
+	}
+
+	/**
+	* 获取商品附件列表
+	* ======
+	* @author 洪波
+	* @version 14.03.25
+	*/
+	public function getAnnexList()
+	{
+		if($pd_id = $this->input->post('pd_id'))
+		{
+			$offset = $this->input->post('offset');
+			$limit = $this->input->post('limit');
+			$pda_status = $this->input->post('pda_status');
+
+			echo json_encode($this->product->getAnnexList($offset, $limit, $pd_id, $pda_status));
+		}
+	}
+
+	/**
+	* 变更商品附件状态
+	* ======
+	* @author 洪波
+	* @version 14.03.26
+	*/
+	public function changeAnnexStatus()
+	{
+		if($pda_id = $this->input->post('pda_id'))
+		{
+			$pda_status = $this->input->post('pda_status');
+
+			echo $this->product->changeAnnexStatus($pda_id, $pda_status);
+		}
+	}
+
+	/**
+	* 删除商品附件
+	* ======
+	* @author 洪波
+	* @version 14.03.26
+	*/
+	public function deleteAnnex()
+	{
+		if($pda_id = $this->input->post('pda_id'))
+		{
+			echo $this->product->deleteAnnex($pda_id);
+		}
 	}
 
 }

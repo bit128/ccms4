@@ -60,16 +60,7 @@
 <!-- Sidebar
 ================================================== -->
 <div class="four columns">
-	<!-- Categories -->
-	<div class="widget-alt">
-		<div class="headline no-margin">
-		  <h4>彩网科技欢迎您</h4></div>
-		 
-         <!--普通用户状态--><p><i class="mini-ico-user"></i> jiangjiefei@hotmail.com</p>
-         <!--VIP用户状态--><ul class="star_list"><li>VIP - jiangjiefei@hotmail.com </li></ul>
-         
-	</div>
-	<!-- Categories -->
+
 	<?php include '_my.php'; ?>
 
 </div>
@@ -81,10 +72,9 @@
 
 <div class="headline no-margin"><h4>我的资料</h4></div>
 
-<p>如果您能提供详细的资料信息我们将会非常感谢，并依此为判断是否给予您VIP的称号。<br/>
-VIP会员将可以享有更多的功能权限，例如XXX<br/>
+<p>如果您能提供详细的资料信息我们将会非常感谢，并依此为您提供更贴身的服务。<br/>
 
-<span class="alert-orange">温馨提示：您提供的资料越真实完善，您成为我们VIP会员的机会就会越高。您的信息隐私是绝对安全的，将仅限于我们与您的沟通交流之用，绝不会泄露于任何第三方。</span></p>
+<span class="alert-orange">温馨提示：您的信息隐私是绝对安全的，将仅限于我们与您的沟通交流之用，绝不会泄露于任何第三方。</span></p>
 
 <!-- Form -->
 		<div id="contact-form">

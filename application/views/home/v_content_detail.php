@@ -114,7 +114,7 @@ $(document).ready(function(){
 	/*热销产品*/
 	var express = new ProductExpress('pd_status = 1', 5, 'pd_click', 'desc', $('#pd_hot'));
 	express.getList(function(d){
-		return '<div class="latest-post-blog"><a href="/index.php/home/item/'+d.pd_id+'" data-val="'+d.pd_id
+		return '<div class="latest-post-blog clearfix"><a href="/index.php/home/item/'+d.pd_id+'" data-val="'+d.pd_id
 			+'" class="pd_image"></a><p><a href="/index.php/home/item/'+d.pd_id+'">'+d.pd_name
 			+'</a> <span><a href="/index.php/home/product"><strong>查看更多</strong> '
 			+'<i class="mini-ico-chevron-right"></i></a></span></p></div>';

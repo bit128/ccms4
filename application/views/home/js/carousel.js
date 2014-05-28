@@ -529,9 +529,9 @@ $.event.special.dragSnap = {
 		});
 	}
 };
-
-		$(document).ready(function() {
-			$('.testimonials-carousel').carousel({ 
-					namespace: "mr-rotato" // Defaults to â€œcarouselâ€.
-				})
+/*
+$(document).ready(function() {
+	$('.testimonials-carousel').carousel({ 
+			namespace: "mr-rotato" // Defaults to â€œcarouselâ€.
 		});
+});*/

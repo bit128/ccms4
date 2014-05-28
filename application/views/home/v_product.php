@@ -72,26 +72,23 @@
 	</div>
 </div>
 
-
-    <div class="notification warning closeable">
-			<p><span>抱歉 !</span>  没有找到你所查询的相关产品，请尝试其他搜索条件。以下为我们为您推荐的产品，供您查看！</p>
-        </div>
-
-	
 	<!-- Portfolio Content -->
 	<div id="#portfolio-wrapper">
-			
-		<?php foreach($product_list as $v) { ?>
+		
+		<?php if($product_list){ foreach($product_list as $v) { ?>
 		<div class="one-third column portfolio-item">
 			<div class="picture"><a href="<?php echo site_url('home/item'), '/', $v['pd_id']; ?>">
 				<span class="pd_image" data-val="<?php echo $v['pd_id']; ?>"></span>
 				<div class="image-overlay-link"></div></a></div>
 			<div class="item-description alt">
 				<h5><a href="<?php echo site_url('home/item'), '/', $v['pd_id']; ?>"><?php echo $v['pd_name']; ?></a></h5>
-				<p><a href="inquiry-item-01.html" class="button color">询价购买</a>
-					<a href="<?php echo site_url('home/item'), '/', $v['pd_id']; ?>" class="button light">查看详细</a></p>
+				<p><a href="<?php echo site_url('home/item'), '/', $v['pd_id']; ?>" class="button color">查看详细</a></p>
 			</div>
 		</div>
+		<?php }} else { ?>
+		<div class="notification warning closeable">
+			<p><span>抱歉 !</span>  没有找到你所查询的相关产品，请尝试其他搜索条件。</p>
+        </div>
 		<?php } ?>
 	</div>
 	<!-- End Portfolio Content -->

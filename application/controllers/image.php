@@ -1,5 +1,32 @@
 <?php
+/**
+* 图片 - 控制器
+* ======
+* @author 洪波
+* @version 14.05.09
+*/
 class Image extends CI_Controller {
+
+    /**
+    * 处理redactor图片上传
+    * ======
+    * @author 洪波
+    * @version 14.05.18
+    */
+    public function redactorUpload()
+    {
+        $config = array(
+            'upload_path' => './uploads/other/',
+            'allowed_types' => 'gif|jpg|png',
+            'file_name' => uniqid()
+            );
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('file'))
+        {
+            $data = $this->upload->data();
+            echo '<img src="/uploads/other/',$data['file_name'],'">';
+        }
+    }
 
 	/**
 	* 上传文件

@@ -95,7 +95,7 @@
 					<label>选择库存 <span>*</span></label>
 					<select id="storage_list">
 					<?php if ($storages){  foreach($storages as $v) {
-							echo '<option value="',$v['st_id'],'">颜色：',$v['st_colour'],' - 尺寸：',$v['st_size'],'</option>';
+							echo '<option value="',$v['st_id'],'">',$v['st_name'],'</option>';
 						} } else { 
 						echo '<option value="0">没有现货</option>';
 					} ?>
@@ -116,7 +116,6 @@
         	</p>
             <div id="mess_box"></div>
 		</div>
-        <p class="alert-red">注意:该款 最低询价数量不低于10件. </p>
 	</div>
     
 	<!-- 1/2 Columns End -->
@@ -135,10 +134,7 @@
     <!-- Tags  下载仅限vip认证会员-->
 	<div class="widget">
 		<div class="headline no-margin"><h4>资料下载</h4></div>
-		<div class="tags">
-			<a href="#">产品说明书</a>
-			<a href="#">产品宣传册</a>
-		</div>
+		<div class="tags" id="pda_list"></div>
 	</div>
     	
 	<!-- Popular Posts -->
@@ -169,28 +165,10 @@
             </div>
 			<div class="tab-content" id="tab2">
              <ul class="lister3">
-		        <li><h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-				<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Mauris ut ligula tortorea lorem ipsum dolor sit amet gorbi vel nulla eget quam porttitor gravida.</p></li>
-                
-                <li><h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-				<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Mauris ut ligula tortorea lorem ipsum dolor sit amet gorbi vel nulla eget quam porttitor gravida.</p></li>
-                
-                <li><h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-				<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Mauris ut ligula tortorea lorem ipsum dolor sit amet gorbi vel nulla eget quam porttitor gravida.</p></li>
-                
-                <li><h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-				<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Mauris ut ligula tortorea lorem ipsum dolor sit amet gorbi vel nulla eget quam porttitor gravida.</p></li>
-                
-                <li><h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-				<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Mauris ut ligula tortorea lorem ipsum dolor sit amet gorbi vel nulla eget quam porttitor gravida.</p></li>
-                
-                <li><h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-				<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Mauris ut ligula tortorea lorem ipsum dolor sit amet gorbi vel nulla eget quam porttitor gravida.</p></li>
-                
-              <li><h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-				<p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Mauris ut ligula tortorea lorem ipsum dolor sit amet gorbi vel nulla eget quam porttitor gravida.</p></li>
-
-       </ul>
+		        <li id="pdq_list">
+		        	<h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
+					<p>Proin iaculis purus consequat stitor gravida.</p></li>
+                </ul>
             </div>
 			<div class="tab-content" id="tab3">
             <!-- Comments -->
@@ -274,6 +252,8 @@
 <?php include '_footer.php'; ?>
 <!-- Footer / End -->
 <script type="text/javascript" src="<?php echo VIEWPATH; ?>/home/js/product_express.js"></script>
+<script type="text/javascript" src="<?php echo VIEWPATH; ?>/admin/js/product_question.js"></script>
+<script type="text/javascript" src="<?php echo VIEWPATH; ?>/admin/js/product_annex.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	(function() {
@@ -292,10 +272,18 @@ $(document).ready(function(){
 			e.preventDefault();
 		});
 	})();
+	/*产品常见问题*/
+	var productQuestion = new ProductQuestion($('#pd_id').val(), $('#pdq_list'), function(d){
+		return '<h4><i class="mini-ico-question-sign"></i>'+d.pdq_question+'</h4><p>'+d.pdq_answer+'</p></li>';
+	});
+	/*产品附件*/
+	var productAnnex = new ProductAnnex($('#pd_id').val(), $('#pda_list'), function(d){
+		return '<a href="/uploads/product/'+d.pda_src+'">'+d.pda_name+'</a>';
+	});
 	/*热销产品*/
 	var express = new ProductExpress('pd_status = 1', 5, 'pd_click', 'desc', $('#pd_hot'));
 	express.getList(function(d){
-		return '<div class="latest-post-blog"><a href="/index.php/home/item/'+d.pd_id+'" data-val="'+d.pd_id
+		return '<div class="latest-post-blog clearfix"><a href="/index.php/home/item/'+d.pd_id+'" data-val="'+d.pd_id
 			+'" class="pd_image"></a><p><a href="/index.php/home/item/'+d.pd_id+'">'+d.pd_name
 			+'</a> <span><a href="/index.php/home/product"><strong>查看更多</strong> '
 			+'<i class="mini-ico-chevron-right"></i></a></span></p></div>';
@@ -306,8 +294,8 @@ $(document).ready(function(){
 	express2.getList(function(d){
 		return '<div class="four columns"><div class="picture"><a href="/index.php/home/item/'+d.pd_id
 			+'" class="pd_image" data-val="'+d.pd_id+'"></a></div><div class="item-description related"><h5>'
-			+'<a href="/index.php/home/item/'+d.pd_id+'">'+d.pd_name+'</a></h5><p><a href="#" class="button color">询价</a>'
-			+'<a href="/index.php/home/item/'+d.pd_id+'" class="button light">查看详细</a></p></div></div>';
+			+'<a href="/index.php/home/item/'+d.pd_id+'">'+d.pd_name+'</a></h5><p>'
+			+'<a href="/index.php/home/item/'+d.pd_id+'" class="button color">查看详细</a></p></div></div>';
 	});
 	/*消息框*/
 	function message(handle, level, message){
@@ -327,10 +315,10 @@ $(document).ready(function(){
 		}
 		if(sp_status == 0){
 			if(st_id == '0'){
-				message(mess, 'error', '<p>请选择库存。如果商品没有库存，则暂时不能添加到购物车，但您仍可以收藏。</p>');
+				message(mess, 'error', '<p>请选择库存。如果商品没有库存，则暂时不能添加到询价单，但您仍可以收藏。</p>');
 				return false;
-			}else if(sp_quantity < 10){
-				message(mess, 'error', '<p>最低询价数量不低于10件。</p>');
+			}else if(sp_quantity <= 0){
+				message(mess, 'error', '<p>请输入询价数量。</p>');
 				return false;
 			}
 		}
@@ -341,14 +329,14 @@ $(document).ready(function(){
 			success: function(data){
 				if(data == '1'){
 					if(sp_status == 0){
-						var rs = '<p>成功添加到购物车。</p>';
+						var rs = '<p>成功添加到询价单。</p>';
 					}else{
 						var rs = '<p>成功添加到收藏夹。</p>';
 					}
 					message(mess, 'success', rs);
 				}else if(data == '-1'){
 					if(sp_status == 0){
-						var rs = '<p>购物车中已经有该商品了。</p>';
+						var rs = '<p>询价单中已经有该商品了。</p>';
 					}else{
 						var rs = '<p>收藏夹中已经有该商品了。</p>';
 					}

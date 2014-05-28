@@ -60,23 +60,9 @@
 <!-- Sidebar
 ================================================== -->
 <div class="four columns">
-	<!-- Categories -->
-	<div class="widget-alt">
-		<div class="headline no-margin">
-		  <h4>彩网科技欢迎您</h4></div>
-		 
-         <!--普通用户状态--><p><i class="mini-ico-user"></i> jiangjiefei@hotmail.com</p>
-         <!--VIP用户状态--><ul class="star_list"><li>VIP - jiangjiefei@hotmail.com </li></ul>
-         
-	</div>
 
-
-	
-	<!-- Categories -->
 	<?php include '_my.php'; ?>
-    
 
-	
 </div>
 
 
@@ -99,11 +85,7 @@
 		<!-- Tabs Content -->
     <div class="tabs-container">
 		<div class="tab-content">
-            <?php if($od_status == '0') { ?>
-        	<div class="notification notice closeable">
-				<p><span>您好 !</span>  我们将会在两个工作日内就您的询价给予回复，感谢您的支持！ </p>
-			</div>
-			<?php } else { ?>
+            <?php if($od_status != '0') { ?>
 			<div class="notification success closeable">
 				<p><span>您好 !</span>  询价已发送至您的登陆邮箱，请查收并感谢您的支持。同时衷心期待您的回复！</p>
 			</div>
@@ -121,7 +103,7 @@
 				<tbody class="cart_list" data-val="<?php echo $v['od_id']?>"></tbody>
 			</table>
 			<p>
-				<i class="mini-ico-list-alt"></i> 单号: <?php echo $v['od_id']; ?> (由系统-年+月+日+时+分+秒-生成)<br/>
+				<i class="mini-ico-list-alt"></i> 单号: <?php echo $v['od_id']; ?><br/>
 				<i class="mini-ico-calendar"></i> 日期: <?php echo date('Y-m-d', $v['od_ctime']); ?><br/>
 				<i class="mini-ico-th-list"></i> 运输: <?php echo $send_type[$v['od_send']]; ?><br/>
 				<i class="mini-ico-comment"></i> 留言: <?php echo $v['od_remark']; ?>
@@ -199,8 +181,7 @@ $(document).ready(function(){
 				var html = '';
 				$.each(datas, function(i, d){
 					html += '<tr><td><a class="pd_image" href="'+pd_path+'/'+d.pd_id+'" data-val="'+d.pd_id+'"></a><a href="'+pd_path+'/'+d.pd_id+'">'
-						+d.pd_name+'</a></td><td>颜色：'+d.st_colour+' 尺寸：'+d.st_size+' 规格：'+d.st_unit
-						+'</td><td>'+d.sp_quantity+'</td></tr>';
+						+d.pd_name+'</a></td><td>'+d.st_name+'</td><td>'+d.sp_quantity+'</td></tr>';
 				});
 				table.html(html).find('.pd_image').each(function(){
 					var f = $(this);

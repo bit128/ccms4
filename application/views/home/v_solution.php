@@ -43,7 +43,7 @@
 	
 		<!-- Page Title -->
 		<div id="page-title">
-			<h2><a href="/">首页</a> <span>/ 解决方案</span></h2>
+			<h2><a href="/">首页</a> <span>/ 修行养生</span></h2>
 			<div id="bolded-line"></div>
 		</div>
 		<!-- Page Title / End -->
@@ -60,47 +60,18 @@
 
 <!-- 960 Container -->
 <div class="container">
-
+	<?php foreach($solution_list as $v) { ?>
 	<div class="sixteen columns row">
-	
 		<!-- Large Notice -->
 		<div class="large-notice">
-        <img class="image-left" src="<?php echo VIEWPATH; ?>/home/images/portfolio/S-150-1.jpg" alt="" />
-			<h2>这里是标题 1</h2>
-			<p>This is a example of style component for calling extra attention to featured content or information. This is a example of style component for calling extra attention to featured content or information. This is a example of style component for calling extra attention to featured content or information. This is a example of style component for calling extra attention to featured content or information.</p>
-			<a href="<?php echo site_url('home/content/0/solution/52f720376e833'); ?>" class="button medium color">查看详细</a>
+        <img class="image-left" src="/uploads/content/<?php echo $v['ct_image']; ?>" alt="" />
+			<h2><?php echo $v['ct_title']; ?></h2>
+			<p><?php echo $v['ct_detail']; ?></p>
+			<a href="<?php echo site_url('home/solution_list'), '/', $v['cn_id']; ?>" class="button medium color">查看详细</a>
             <div class="clear"></div>
 		</div>
-		
 	</div>
-    
-	<div class="sixteen columns row">
-		
-		<!-- Large Notice -->
-		<div class="large-notice">
-        <img class="image-left" src="<?php echo VIEWPATH; ?>/home/images/portfolio/S-150-2.jpg" alt="" />
-			<h2>这里是标题 2</h2>
-			<p>This is a example of style component for calling extra attention to featured content or information. This is a example of style component for calling extra attention to featured content or information. This is a example of style component for calling extra attention to featured content or information. This is a example of style component for calling extra attention to featured content or information.</p>
-			<a href="<?php echo site_url('home/content/0/solution/52f72044a723b'); ?>" class="button medium color">查看详细</a>
-            <div class="clear"></div>
-		</div>
-		
-	</div>
-    
-    
-    <div class="sixteen columns row">
-	
-		<!-- Large Notice -->
-		<div class="large-notice">
-        <img class="image-left" src="<?php echo VIEWPATH; ?>/home/images/portfolio/S-150-1.jpg" alt="" />
-			<h2>这里是标题 3</h2>
-			<p>This is a example of style component for calling extra attention to featured content or information.</p>
-			<a href="<?php echo site_url('home/content/0/solution/52f72045bb5f7'); ?>" class="button medium color">查看详细</a>
-            <div class="clear"></div>
-		</div>
-		
-	</div>
-
+	<?php } ?>
 </div>
 <!-- 960 Container / End -->
 

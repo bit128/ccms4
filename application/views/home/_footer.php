@@ -3,69 +3,28 @@
 	<div class="container">
 	
 		<!-- About -->
-		<div class="four columns">
+		<div class="one-third column">
 			<div class="footer-headline"><h4>主产品线目录</h4></div>
-			<ul class="links-list">
-				<li><a href="#">佛珠佛具</a></li>
-				<li><a href="#">茶叶</a></li>
-				<li><a href="#">山珍特产</a></li>
-				<li><a href="#">工艺品</a></li>
-				<li><a href="#">文玩字画</a></li>
-			</ul>
+			<ul class="links-list" id="pro_category"></ul>
 		</div>
 		
 		<!-- Useful Links -->
-		<div class="four columns">
+		<div class="one-third column">
 			<div class="footer-headline"><h4>便捷链接</h4></div>
-			<ul class="links-list">
-				<li><a href="#">新闻中心</a></li>
-				<li><a href="#">购买合作</a></li>
-				<li><a href="#">联系我们</a></li>
-				<li><a href="#">关于我们</a></li>
-				<li><a href="#">隐私政策</a></li>
-				<li><a href="#">网站地图</a></li>
-			</ul>
+			<ul class="links-list" id="hot_link"></ul>
 		</div>
 		
 		<!-- Photo Stream -->
-		<div class="four columns">
+		<div class="one-third column">
 			<div class="footer-headline"><h4>联系信息</h4></div>
-            <div class="tooltips">
-            <p>
-邮件: <a rel="tooltip" href="#" data-original-title="欢迎您联系我 !">Jiangjiefei@outlook.com</a> <br/> 
-电话: +86 0566 5111719<br/> 
-</p>
-            
-            
-            
-            <p>公司地址 <br/> <a rel="tooltip" href="#" data-original-title="地址">安徽省池州市青阳县蓉城镇陵阳路</a><br/>
-             <a rel="tooltip" href="#" data-original-title="工作时间">周一至周五: 早上09:00 - 下午18:00 </a>
-            </p>
-            </div>
+            <div class="tooltips" id="contact_mess"></div>
            
         </div>
-		
-		<!-- Latest Tweets -->
-		<div class="four columns">
-        <div class="footer-headline"><h4>支付方式</h4></div>
-           
-			<div class="flickr-widget clearfix">
-			    <ul>
-				<li><a href="https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2" target="_blank"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/headico.jpg" alt="" /></a></li>
-				<li><a href="https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2" target="_blank"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/headico.jpg" alt="" /></a></li>
-				<li><a href="https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2" target="_blank"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/headico.jpg" alt="" /></a></li>
-                <li><a href="https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2" target="_blank"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/headico.jpg" alt="" /></a></li>
-				<li><a href="https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2" target="_blank"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/headico.jpg" alt="" /></a></li>
-				<li><a href="https://www.paypal.com/c2/webapps/mpp/home?locale.x=en_C2" target="_blank"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/headico.jpg" alt="" /></a></li>
-                </ul>
-			</div>
-			
-		</div>
 
 		<!-- Footer / Bottom -->
 		<div class="sixteen columns">
 			<div id="footer-bottom">
-				&copy; Copyright &copy; 2013. 九华阁（JHG）贸易 All rights reserved.
+				<div id="footer_content"></div>
 				<div id="scroll-top-top"><a href="#"></a></div>
 			</div>
 		</div>
@@ -74,3 +33,65 @@
 	<!-- 960 Container / End -->
 
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	/*页面搜索*/
+	$('#search').on('submit', function(){
+		var keyword = $(this).find('input').val();
+		if(keyword != ''){
+			location.href = '/index.php/home/product/0/0/0/'+encodeURI(encodeURI(keyword));
+		}
+		return false;
+	});
+	/*首页logo*/
+	$.get('/index.php/home/showContent/536d93a25c2d1', function(data){
+		var datas = $.parseJSON(data);
+		$('#logo').html('<a href="/"><img src="/uploads/content/'+datas.ct_image+'" alt="logo" /></a>');
+	});
+	/*主导航*/
+	$.get('/index.php/home/channelList/0/10/536d95c6cf841', function(data){
+		var datas = $.parseJSON(data);
+		var html = '';
+		$.each(datas.result, function(i, d){
+			html += '<li><a href="'+d.cn_url+'">'+d.cn_name+'</a></li>';
+		});
+		$('#nav').html(html);
+	});
+	/*主线产品目录*/
+	$.get('/index.php/home/channelList/0/16/533a6bf49ed03', function(data){
+		var html = '';
+		if(data != ''){
+			var datas = $.parseJSON(data);
+			$.each(datas.result, function(i, d){
+				html += '<li><a href="'+d.cn_url+'">'+d.cn_name+'</a></li>';
+			});
+		}
+		$('#pro_category').html(html);
+	});
+	/*便捷链接*/
+	$.get('/index.php/home/channelList/0/16/534a657df2a0e', function(data){
+		var html = '';
+		if(data != ''){
+			var datas = $.parseJSON(data);
+			$.each(datas.result, function(i, d){
+				html += '<li><a href="'+d.cn_url+'">'+d.cn_name+'</a></li>';
+			});
+		}
+		$('#hot_link').html(html);
+	});
+	/*联系信息*/
+	$.get('/index.php/home/showContent/534a66e2cedd4', function(data){
+		var html = '';
+		if(data != ''){
+			var d = $.parseJSON(data);
+			html = d.ct_detail;
+		}
+		$('#contact_mess').html(html);
+	});
+	/*页脚信息*/
+	$.get('/index.php/home/showContent/5378973785f68', function(data){
+		var d = $.parseJSON(data);
+		$('#footer_content').html(d.ct_detail);
+	});
+})
+</script>

@@ -2,10 +2,7 @@
 
 		<!-- Logo -->
 	<div class="eight columns">
-		<div id="logo" >
-			<a href="#"><img src="<?php echo VIEWPATH; ?>/home/images/logo.png" alt="logo" /></a>
-			<div id="tagline" class="clearfix">九华阁 - 品质保证，值得信赖！</div>
-		</div>
+		<div id="logo" ></div>
 	</div>
 
 	<!-- Social / Contact -->

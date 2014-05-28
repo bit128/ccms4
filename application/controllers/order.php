@@ -40,10 +40,18 @@ class Order extends CI_Controller {
 	        $config['per_page'] = $limit;
 	        $this->pagination->initialize($config);
 	        $pages = $this->pagination->create_links();
+	        //获取用户邮箱
+	        $this->load->model('User_model', 'user');
+	        $orders = $result['result'];
+	        foreach ($orders as $k => $v)
+	        {
+	        	$u = $this->user->get($v['user_id'], 'user_account');
+	        	$orders[$k]['user_account'] = $u['user_account'];
+	        }
 
 			$data = array(
 				'od_status' => $od_status,
-				'order' => $result['result'],
+				'order' => $orders,
 				'pages' => $pages
 				);
 			$this->load->view('admin/v_order_list', $data);
@@ -61,6 +69,9 @@ class Order extends CI_Controller {
 			$orders = $this->order->getOrder($od_id);
 			if($orders)
 			{
+				$this->load->model('User_model', 'user');
+				$u = $this->user->get($orders['user_id'], 'user_account');
+				$orders['user_account'] = $u['user_account'];
 				$data = array(
 					'orders' => $orders
 					);

@@ -44,11 +44,9 @@
 		<section class="slider">
 			<div class="flexslider home">
 				<ul class="slides">
-				
-					<li><a href="#"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/slider-img-01.jpg" alt="" /></a></li>
-					<li><a href="#"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/slider-img-02.jpg" alt="" /></a></li> 
-                    <li><a href="#"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/slider-img-03.jpg" alt="" /></a></li>
-					
+				<?php foreach($banner as $v) { ?>
+					<li><a href="<?php echo $v['ct_subtitle']; ?>"><img src="/uploads/content/<?php echo $v['ct_image']; ?>" alt="<?php echo $v['ct_title']?>" title="<?php echo $v['ct_title']?>"></a></li>
+				<?php } ?>	
 				</ul>
 			</div>
 		</section>
@@ -68,11 +66,9 @@
 
 	<!-- 1/3 Columns -->
 	<div class="eight columns">
-		<div class="headline"><h3>九华阁简介</h3></div>
-		<p> 九华阁贸易有限公司地处中国四大佛教名山之一的九华山，当地景色秀丽，人杰地灵，长年受佛家文化熏陶，人文淳朴，一派忠厚景象。每年吸引数百万中外游客来此驻足观光，参禅礼佛，流连忘返。<br>
-
-我们秉着以诚待客，广结善缘的心态，长期经营批发各色九华山开光佛珠，佛具，手链饰品，品种材质包含檀木、砗磲、玛瑙、水晶、菩提子等。并有九华山当地土特产供君选购，产品有九华佛茶，黄石溪毛峰茶，笋干，九华冰姜，石耳等食品和九华折扇等工艺品。<br>
-…… <a href="about.html">更多信息 <i class="mini-ico-chevron-right"></i></a> 
+		<div class="headline"><h3>公司简介</h3></div>
+		<p><?php echo $detail['ct_summary']; ?></p>
+		<p>…… <a href="<?php echo site_url('home/about'); ?>">更多信息 <i class="mini-ico-chevron-right"></i></a> 
         </p>
 	</div>
 	
@@ -123,49 +119,7 @@
 			<!-- Testimonial's Carousel -->
 			<div class="testimonials-carousel" data-autorotate="3000">
 				<ul class="carousel" >
-				
-					<li class="testimonial" id="pd_hot">
-						
-              <!-- Project -->
-	<div class="four columns">
-		<div class="picture"><a href="item.html"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/portoflio-01.jpg" alt="" /><div class="image-overlay-link"></div></a></div>
-		<div class="item-description">
-			<h5><a href="#">顶级顺纹老料极品小叶紫檀高档佛珠</a></h5> <p><a href="inquiry-no-item.html" class="button color">询价购买</a>
-			<a href="item.html" class="button light">查看详细</a></p>
-		
-		</div>
-	</div>
-	
-	<!-- Project -->
-	<div class="four columns">
-		<div class="picture"><a href="item.html"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/portoflio-02.jpg" alt="" /><div class="image-overlay-link"></div></a></div>
-		<div class="item-description">
-			<h5><a href="#">顶级顺纹老料极品小叶紫檀高档佛珠</a></h5> <p><a href="inquiry-no-item.html" class="button color">询价购买</a>
-			<a href="item.html" class="button light">查看详细</a></p>
-		</div>
-	</div>
-	
-	<!-- Project -->
-	<div class="four columns">
-		<div class="picture"><a href="item.html"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/portoflio-03.jpg" alt="" /><div class="image-overlay-link"></div></a></div>
-		<div class="item-description">
-			<h5><a href="#">顶级顺纹老料极品小叶紫檀高档佛珠</a></h5> <p><a href="inquiry-no-item.html" class="button color">询价购买</a>
-			<a href="item.html" class="button light">查看详细</a></p>
-		</div>
-	</div>
-	
-	<!-- Project -->
-	<div class="four columns">
-		<div class="picture"><a href="item.html"><img src="<?php echo VIEWPATH; ?>/home/images/portfolio/portoflio-04.jpg" alt="" /><div class="image-overlay-link"></div></a></div>
-		<div class="item-description">
-			<h5><a href="#">顶级顺纹老料极品小叶紫檀高档佛珠</a></h5> <p><a href="inquiry-no-item.html" class="button color">询价购买</a>
-			<a href="item.html" class="button light">查看详细</a></p>
-		</div>
-	</div>
-    
-					</li>
-                    
-					
+					<li class="testimonial" id="pd_hot"></li>
 				</ul>
 			</div>
 </div>
@@ -208,8 +162,7 @@ $(document).ready(function(){
 		return '<div class="four columns"><div class="picture"><a class="pd_image" href="/index.php/home/item/'
 			+d.pd_id+'" data-val="'+d.pd_id+'"></a><div class="image-overlay-link"></div></a></div>'
 			+'<div class="item-description"><h5><a href="/index.php/home/item/'+d.pd_id+'">'+d.pd_name
-			+'</a></h5><p><a href="javascript:;" class="button color">询价购买</a> '
-			+'<a href="/index.php/home/item/'+d.pd_id+'" class="button light">查看详细</a></p></div></div>';
+			+'</a></h5><p><a href="/index.php/home/item/'+d.pd_id+'" class="button color">查看详细</a></p></div></div>';
 	});
 	//公司新闻
 	new NewsExpress($('#ne_1'), '530029c52bcf6', 4).getList(function(d){

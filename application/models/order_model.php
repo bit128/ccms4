@@ -84,7 +84,7 @@ class Order_model extends CI_Model {
 	{
 		//查询字段
 		$fields = 't_shopping_cart.sp_id,t_shopping_cart.od_id,t_shopping_cart.st_id,t_shopping_cart.sp_quantity,t_shopping_cart.sp_time'
-			.',t_storage.st_unit,t_storage.st_colour,t_storage.st_size,t_storage.st_outprice'
+			.',t_storage.st_name,t_storage.st_outprice'
 			.',t_product.pd_id,t_product.pd_name,t_product.pd_no';
 		//组合查询条件
 		$condition = "t_shopping_cart.user_id = '{$user_id}' AND t_shopping_cart.sp_status = {$sp_status}";
@@ -390,7 +390,7 @@ class Order_model extends CI_Model {
 	{
 		//检索字段
 		$fields = 't_shopping_cart.st_id,t_shopping_cart.sp_quantity,'
-			.'t_storage.pd_id,t_storage.st_unit,t_storage.st_colour,t_storage.st_size,t_storage.st_outprice,'
+			.'t_storage.pd_id,t_storage.st_name,t_storage.st_outprice,'
 			.'t_product.pd_name,t_product.pd_no';
 		//获取数据
 		$items = $this->db->select($fields)
@@ -417,7 +417,7 @@ class Order_model extends CI_Model {
 		//获取订单信息
 		$order = $this->db->select($this->getOrderAttributes())
 			->get_where('t_order', array('od_id' => $od_id))
-			->result_array();
+			->row_array();
 		if($order)
 		{
 			$order['items'] = $this->getOrderItem($od_id);

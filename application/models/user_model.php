@@ -104,7 +104,7 @@ class User_model extends CI_Model {
 	{
 		$user_password = md5($user_password);
 		$condition = "user_account = '{$user_account}' AND user_password = '{$user_password}'";
-		$user = $this->db->select('user_id,user_nick,user_avatar,user_status,user_count')
+		$user = $this->db->select('user_id,user_account,user_nick,user_avatar,user_status,user_count')
 			->where($condition)
 			->get('t_user')
 			->row_array();
@@ -212,6 +212,7 @@ class User_model extends CI_Model {
 	private function cache($user)
 	{
 		$this->session->set_userdata('user_id', $user['user_id']);
+		$this->session->set_userdata('user_account', $user['user_account']);
 		$this->session->set_userdata('user_nick', $user['user_nick']);
 		$this->session->set_userdata('user_avatar', $user['user_avatar']);
 		$this->session->set_userdata('user_status', $user['user_status']);
@@ -320,6 +321,31 @@ class User_model extends CI_Model {
 		else
 		{
 			return -1;
+		}
+	}
+
+	/**
+	* 重置用户密码
+	* ======
+	* @param $account 	用户账户
+	* ======
+	* @author 洪波
+	* @version 14.05.10
+	*/
+	public function resetPassword($account)
+	{
+		$new_password = rand(100000, 999999);
+		$flag = $this->db->where('user_account', $account)
+			->update('t_user', array(
+				'user_password' => md5($new_password)
+				));
+		if($flag)
+		{
+			return $new_password;
+		}
+		else
+		{
+			return 0;
 		}
 	}
 

@@ -60,19 +60,7 @@
 <!-- Sidebar
 ================================================== -->
 <div class="four columns">
-	<!-- Categories -->
-	<div class="widget-alt">
-		<div class="headline no-margin">
-		  <h4>彩网科技欢迎您</h4></div>
-		 
-         <!--普通用户状态--><p><i class="mini-ico-user"></i> jiangjiefei@hotmail.com</p>
-         <!--VIP用户状态--><ul class="star_list"><li>VIP - jiangjiefei@hotmail.com </li></ul>
-         
-	</div>
-
-
 	
-	<!-- Categories -->
 	<?php include '_my.php'; ?>
     
 </div>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>New Site</title>
+    <title>欢迎使用CCMS彩网后台内容管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -50,6 +50,7 @@
               <div id="reply_list" class="f_mini"></div>
             </div>
           </div>
+          <div class="alert alert-warning">该功能仅为演示，如需定制请详细咨询.</div>
         </div>
       </div>
       <?php include '_footer.php'; ?>

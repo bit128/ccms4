@@ -106,10 +106,8 @@ class Storage extends CI_Controller {
 	{
 		if($pd_id = $this->input->post('pd_id'))
 		{
-			$st_unit = $this->input->post('st_unit');
-			$st_colour = $this->input->post('st_colour');
-			$st_size = $this->input->post('st_size');
-			echo $this->storage->create($pd_id, $st_unit, $st_size, $st_colour);
+			$st_name = $this->input->post('st_name');
+			echo $this->storage->create($pd_id, $st_name);
 		}
 	}
 

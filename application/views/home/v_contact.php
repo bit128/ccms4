@@ -121,13 +121,7 @@
     <!-- Contact Details -->
 	<div class="four columns">
 		<div class="headline no-margin"><h4>联系我们</h4></div>
-        <ul class="square_list">
-        <li>电话: +86 056 6511 1719</li>
-		<li>电子邮箱: <a href="mailto:jiangjiefei@hotmail.com">jiangjiefei@hotmail.com</a></li>
-        <li>传真: +86 056 6511 1719</li>
-        <li>业务地址： 安徽省池州市青阳县蓉城镇陵阳路134号</li>
-        <li>工厂地址： 安徽省九华山柯村新区</li>
-        </ul>	
+        <?php echo $cont['ct_detail']; ?>
 	</div>
     
 	<!-- Contact Details -->
@@ -139,7 +133,7 @@
 		<div id="googlemaps" class="google-map google-map-full" style="height:200px"></div>
 
 		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-		<script src="js/jquery.gmap.min.js"></script>
+		<script src="<?php echo VIEWPATH; ?>/home/js/jquery.gmap.min.js"></script>
 		
 		<script type="text/javascript">
 		jQuery('#googlemaps').gMap({
@@ -161,6 +155,7 @@
 	</div>
 		
 	<!-- Contact Details -->
+	<!--
 	<div class="four columns">
 		<div class="headline low-margin"><h4>关注我们</h4></div>
 		<div id="social" class="tooltips">
@@ -172,7 +167,7 @@
 		</div>
 		
 	</div>
-
+	-->
 </div>
 <!-- End 960 Container -->
 

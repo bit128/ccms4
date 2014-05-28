@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>New Site</title>
+    <title>欢迎使用CCMS彩网后台内容管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -16,18 +16,18 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span12">
+          <!--
           <p>
             <select class="input-small">
               <option value="0">全部</option>
-              <option value="1">平台用户</option>
-              <option value="2">站内用户</option>
-              <option value="3">高级用户</option>
+              <option value="1">站内用户</option>
+              <option value="2">高级用户</option>
             </select>
             <span class="input-prepend">
               <input type="text">
               <a class="btn">搜索</a>
             </span>
-          </p>
+          </p>-->
           <table class="table table-bordered table-striped table-hover">
             <thead>
               <tr>
@@ -53,9 +53,8 @@
                 <td><?php echo $v['user_score']; ?></td>
                 <td><?php echo $v['user_allscore']; ?></td>
                 <td><?php switch ($v['user_status']) {
-                  case 1: echo '平台'; break;
-                  case 2: echo '站内'; break;
-                  case 3: echo '高级'; break;
+                  case 1: echo '普通'; break;
+                  case 2: echo '高级'; break;
                 }?></td>
                 <td><a class="btn btn-mini" href="<?php echo site_url('user/userDetail'), '/', $v['user_id']; ?>">详情</a></td>
               </tr>

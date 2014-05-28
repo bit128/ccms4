@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>New Site</title>
+    <title>欢迎使用CCMS彩网后台内容管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -80,7 +80,7 @@
 $(document).ready(function(){
   /*富文本*/
   $('.redactor').redactor({
-      //imageUpload: '/service/uploadImages',
+      imageUpload: '/index.php/image/redactorUpload',
       lang: 'zh_cn'
   });
   /*上传图片*/

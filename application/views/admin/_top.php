@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="javascript:;">New Site</a>
+          <a class="brand" href="javascript:;">CCMS 4</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               <a href="javascript:;" class="navbar-link"><i class="icon-user icon-white"></i> <?php echo $this->session->userdata('am_account'); ?></a> |

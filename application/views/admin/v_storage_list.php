@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>New Site</title>
+    <title>欢迎使用CCMS彩网后台内容管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -22,9 +22,7 @@
         <thead>
           <tr>
             <th>编号</th>
-            <th>单位</th>
-            <th>尺寸</th>
-            <th>颜色</th>
+            <th>库存名称</th>
             <th>数量</th>
             <th>进货价</th>
             <th>售价</th>
@@ -37,9 +35,7 @@
           <?php foreach ($storage as $v) { ?>
           <tr>
             <td><?php echo $v['st_id']; ?></td>
-            <td><?php echo $v['st_unit']; ?></td>
-            <td><?php echo $v['st_size']; ?></td>
-            <td><?php echo $v['st_colour']; ?></td>
+            <td><?php echo $v['st_name']; ?></td>
             <td><?php echo $v['st_quantity']; ?></td>
             <td><?php echo $v['st_inprice']; ?></td>
             <td>
@@ -106,9 +102,7 @@ $(document).ready(function(){
   $('#add_storage').on('click', function(e){
     var pd_id = $('#pd_id').val();
     if(pd_id != '0'){
-      var item = '<tr><td>-</td><td><input type="text" class="input-mini" style="margin:0"></td>'
-        +'<td><input type="text" class="input-mini" style="margin:0"></td>'
-        +'<td><input type="text" class="input-mini" style="margin:0"></td>'
+      var item = '<tr><td>-</td><td><input type="text"style="margin:0"></td>'
         +'<td>-</td><td>-</td>-<td>-</td><td>-</td><td>-</td>'
         +'<td><a class="btn btn-mini btn-success add_item">添加</a> <a class="btn btn-mini cancel_item">放弃</a></td><tr>';
       $('#storage_list').prepend(item);
@@ -117,22 +111,21 @@ $(document).ready(function(){
   /*保存库存条目到数据库*/
   $('#storage_list').on('click', '.add_item', function(){
     var tr = $(this).parents('tr');
-    var st_unit_input = tr.find('input:eq(0)');
-    if(st_unit_input.val() == ''){alert('请填写计量单位.');st_unit_input.focus();return;}
-    var st_size_input = tr.find('input:eq(1)');
-    if(st_size_input.val() == ''){alert('请填写规格尺寸.');st_size_input.focus();return;}
-    var st_colour_input = tr.find('input:eq(2)');
-    if(st_colour_input.val() == ''){alert('请填写色彩.');st_colour_input.focus();return;}
+    var st_name_input = tr.find('input:eq(0)');
+    if(st_name_input.val() == ''){alert('请填写商品库存名称.');st_name_input.focus();return;}
     var pd_id = $('#pd_id').val();
     /*保存数据到数据库*/
     $.ajax({
       type: 'POST',
       url: '/index.php/storage/addStorage',
-      data: {pd_id: pd_id, st_unit: st_unit_input.val(), st_size: st_size_input.val(), st_colour: st_colour_input.val()}
+      data: {pd_id: pd_id, st_name: st_name_input.val()},
+      success: function(){
+        location.reload();
+      }
     });
-    tr.remove();
-    location.href = '/index.php/storage/storageList/0/'+pd_id+'/0';
   });
+  /*取消保存*/
+  $('#storage_list').on('click', '.cancel_item', function(){ $(this).parents('tr').remove(); });
   /*删除库存*/
   $('#storage_list').on('click', '.storage_delete', function(){
     var tr = $(this).parents('tr');
@@ -204,9 +197,9 @@ $(document).ready(function(){
         $('#io_title').html('库存商品 <span class="text-error">出库</span>')
       }
       tr = $(this).parents('tr');
-      quantity = tr.find('td:eq(4)').text();
-      $('#st_price').val(tr.find('td:eq(5)').text());
-      $('#st_id').val(tr.find('td:eq(0)').text());
+      quantity = tr.find('td:eq(2)').text();
+      $('#st_price').val(tr.find('td:eq(3)').text().replace(/(^\s*)|(\s*$)/g, ""));
+      $('#st_id').val(tr.find('td:eq(0)').text().replace(/(^\s*)|(\s*$)/g, ""));
       $('#op').val(op);
       $('#storageModal').modal('show');
     });
@@ -228,11 +221,11 @@ $(document).ready(function(){
             data: {st_id: st_id, st_price: st_price, st_quantity: st_quantity, op: op},
             success: function(data){
               if(data == '1'){
-                tr.find('td:eq(5)').text(st_price);
+                tr.find('td:eq(3)').text(st_price);
                 if(op == '0'){
-                  tr.find('td:eq(4)').text(parseInt(quantity) - parseInt(st_quantity));
+                  tr.find('td:eq(2)').text(parseInt(quantity) - parseInt(st_quantity));
                 }else{
-                  tr.find('td:eq(4)').text(parseInt(quantity) + parseInt(st_quantity));
+                  tr.find('td:eq(2)').text(parseInt(quantity) + parseInt(st_quantity));
                 }
               }
             }

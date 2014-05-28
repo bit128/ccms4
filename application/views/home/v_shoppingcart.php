@@ -58,17 +58,13 @@
 
 	<!-- Text -->
 	<div class="sixteen columns">
-    	<p> 您好！ 我们将会在两个工作日内就您的询价给予回复，感谢您的支持！</p>
+    	<p> 您好！ 我们将会在第一时间就您的询价给予回复，感谢您的支持！</p>
 	<div class="headline margin"><h3>询价单</h3></div>
-      
-    <div class="notification warning closeable">
-		<p><span>注意: 最低询价数量不低于10.</span> </p>
-	</div>
       
         <table class="standard-table">
 			<tr>
 				<th>产品名称 </th>
-				<th>型号</th>
+				<th>库存名称</th>
 				<th>数量</th>
 				<th>操作</th>
 			</tr>
@@ -76,7 +72,7 @@
 			<tr>
 				<td><a href="<?php echo site_url('home/item'), '/' , $v['pd_id'];?>" target="_blank" class="pd_image" data-val="<?php echo $v['pd_id']; ?>"></a>
             		<a href="<?php echo site_url('home/item'), '/' , $v['pd_id'];?>" target="_blank"><?php echo $v['pd_name']; ?></a></td>
-				<td><?php echo '颜色：',$v['st_colour'],' - 尺寸：',$v['st_size'],' - 规格：',$v['st_unit']; ?></td>
+				<td><?php echo $v['st_name']; ?></td>
 				<td><input type="text" class="text sp_quantity" data-val="<?php echo $v['sp_id']; ?>" value="<?php echo $v['sp_quantity']; ?>"/></td>
 				<td><a href="javascript:;" class="cart_remove" data-val="<?php echo $v['sp_id']; ?>">删除</a></td>
 	        </tr>
@@ -117,7 +113,7 @@
 		<!-- Headline -->
 		<div class="headline no-margin"><h3>询价单摘要</h3></div>
 		
-		<h4 class="row"><i class="mini-ico-tags"></i>  询价产品总数量 - <span class="alert-orange" id="sp_count"> 25 件</span> </h4>
+		<h4 class="row"><i class="mini-ico-tags"></i>  询价产品总数量: <span class="alert-orange" id="sp_count"> 25 件</span> </h4>
         
         <a href="<?php echo site_url('home/product'); ?>/0/0/0" class="button medium light">继续添加</a>
         <a href="javascript:;" class="button medium color" id="create_order">发送询价单</a>

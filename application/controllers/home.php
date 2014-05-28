@@ -7,6 +7,23 @@
 */
 class Home extends CI_Controller {
 
+	public $title = "彩网贸易CTS";
+
+	public function __construct()
+	{
+		parent::__construct();
+		if($web_title = $this->session->userdata('web_title'))
+		{
+			$this->title = $web_title;
+		}
+		else
+		{
+			$title = $this->getContent('536e037497e9c', 'ct_title');
+			$this->session->set_userdata('web_title', $title['ct_title']);
+			$this->title = $title['ct_title'];
+		}
+	}
+
 	/**
 	* 首页 - 页面
 	* ======
@@ -15,7 +32,35 @@ class Home extends CI_Controller {
 	*/
 	public function index()
 	{
-		$this->load->view('home/v_index');
+		//首页幻灯
+		$banner = $this->getContentList(0, 10, '532e44796a9ef', 1, 'ct_id,ct_title,ct_subtitle,ct_image');
+		//公司简介
+		$detail = $this->getContent('532e4b77b35c8', 'ct_summary');
+
+		$this->title = '首页 | ' . $this->title;
+		$data = array(
+			'banner' => $banner['result'],
+			'detail' => $detail
+			);
+		$this->load->view('home/v_index', $data);
+	}
+
+	/**
+	* 公共页 - 页面
+	* ======
+	* @author 洪波
+	* @version 14.04.01
+	*/
+	public function pubpage($ct_id)
+	{
+		if(strlen($ct_id) == 13)
+		{
+			$content = $this->getContent($ct_id);
+			$data = array(
+				'content' => $content
+				);
+			$this->load->view('home/v_public', $data);
+		}
 	}
 
 	/**
@@ -24,7 +69,7 @@ class Home extends CI_Controller {
 	* @author 洪波
 	* @version 14.02.01
 	*/
-	public function product($offset, $categorys, $targets)
+	public function product($offset, $categorys, $targets, $keyword = '')
 	{
 		//获取商品种类列表
 		$category_list = $this->buildCategory($categorys, $targets);
@@ -65,19 +110,25 @@ class Home extends CI_Controller {
 					$condition = "pd_id = '-1'";
 			}
 		}
+		if($keyword != '')
+		{
+			$keyword = urldecode(urldecode($keyword));
+			$condition .= " AND pd_name like '%{$keyword}%'";
+		}
 		//分页显示数据
 		$this->load->model('Product_model', 'product');
 		$limit = 9;
 		$product_list = $this->product->getList($offset, $limit, $condition);
 		$this->load->library('pagination');
 		$config['base_url'] = site_url('home/product');
-        $config['suffix'] = '/'.$categorys.'/'.$targets;
+        $config['suffix'] = '/'.$categorys.'/'.$targets.'/'.$keyword;
         $config['first_url'] = $config['base_url'].'/0'.$config['suffix'];
         $config['total_rows'] = $product_list['count'];
         $config['per_page'] = $limit;
         $this->pagination->initialize($config);
         $pages = $this->pagination->create_links();
 
+        $this->title = '产品中心 | ' . $this->title;
 		$data = array(
 			'category_list' => $category_list,
 			'target_list' => $target_list,
@@ -107,6 +158,8 @@ class Home extends CI_Controller {
 				'pd_id' => $product_detail['pd_id'],
 				'st_status' => 1
 				), 1);
+
+			$this->title = $product_detail['pd_name'] . ' | 产品中心 | ' . $this->title;
 			$data = array(
 				'products' => $product_detail,
 				'storages' => $product_storage['result'],
@@ -116,7 +169,7 @@ class Home extends CI_Controller {
 	}
 
 	/**
-	* 解决方案 - 页面
+	* 修身养性 - 页面
 	* ======
 	* @author 洪波
 	* @version 14.02.01
@@ -124,15 +177,75 @@ class Home extends CI_Controller {
 	public function solution()
 	{
 		$cn_id = '52f6fa53a0520';
-		$content = $this->getContentList(0, 10, $cn_id, 'ct_id,ct_title,ct_summary,ct_image');
+		//获取子栏目id列表
+		$child = $this->getChannelList(0, 99, $cn_id, 'cn_id,cn_order');
+		//获取子栏目内容列表
+		$result = array();
+		foreach ($child['result'] as $v)
+		{
+			$rs = $this->getContentList(0, 1, $v['cn_id'], 2);
+			if($rs['count'] > 0)
+			{
+				$result[$v['cn_order']] = $rs['result'][0];
+			}
+		}
+
+		$this->title = '修身养性 | ' . $this->title;
 		$data = array(
-			'content' => $content['result']
+			'solution_list' => $result
 			);
 		$this->load->view('home/v_solution', $data);
 	}
 
+	/**
+	* 解决方案列表 - 页面
+	* ======
+	* @author 洪波
+	* @version 14.03.31
+	*/
+	public function solution_list($cn_id, $ct_id = '')
+	{
+		if($cn_id != '')
+		{
+			$cn_fid = '52f6fa53a0520';
+			$path = site_url('home/solution_list');
+			$breadcrumb = '';
+			$title = '';
+			//生成nav（获取子栏目列表）
+			$side = $this->getChannelList(0, 99, $cn_fid, 'cn_id,cn_name');
+			$data = array(
+				'side' => $side['result'],
+				'cn_id' => $cn_id
+				);
+			//获取当前栏目名称
+			$cn_name = $this->getChannel($cn_id);
+			$data['title'] = $cn_name['cn_name'];
+			$breadcrumb .= '/ <a href="'.$path.'/'.$cn_id.'">'.$cn_name['cn_name'].'</a>';
+			//获取当前栏目列表
+			if($ct_id == '')
+			{
+				//显示列表
+				$content = $this->getContentList(0, 20, $cn_id, 1, 'ct_id,ct_title,ct_ctime');
+				$data['content_list'] = $content['result'];
+			}
+			else
+			{
+				$data['content_list'] = 0;
+				//显示内容
+				$content = $this->getContent($ct_id);
+				$data['content'] = $content;
+				$data['title'] = $content['ct_title'];
+				$breadcrumb .= ' / '.$content['ct_title'];
+			}
+			$data['breadcrumb'] = $breadcrumb;
+
+			$this->title = $data['title'] . ' | 修身养性 | ' . $this->title;
+			$this->load->view('home/v_solution_list', $data);
+		}
+	}
+
 	private $content_breadcrumb = array(
-		'solution' => '解决方案',
+		'solution' => '修身养性',
 		'news' => '新闻中心',
 		'support' => '购买合作'
 		);
@@ -149,10 +262,10 @@ class Home extends CI_Controller {
 		//获取栏目详情
 		$channel = $this->getChannel($cn_id);
 		//获取兄弟栏目列表
-		$channel_list = $this->getChannnelList(0, 20, $channel['cn_fid'], 'cn_id,cn_name');
+		$channel_list = $this->getChannelList(0, 20, $channel['cn_fid'], 'cn_id,cn_name');
 		//获取栏目下内容列表
 		$content_limit = 12;
-		$content_list = $this->getContentList($offset, $content_limit, $cn_id, 'ct_id,ct_title,ct_ctime');
+		$content_list = $this->getContentList($offset, $content_limit, $cn_id, 1, 'ct_id,ct_title,ct_ctime');
 		$this->load->library('pagination');
 		$config['base_url'] = site_url('home/content');
         $config['suffix'] = '/'.$type.'/'.$cn_id;
@@ -164,6 +277,7 @@ class Home extends CI_Controller {
 
 		if($channel)
 		{
+			$this->title = $channel['cn_name'] . ' | 公司新闻 | ' . $this->title;
 			$data = array(
 				'type' => $type,
 				'breadcrumb' => $breadcrumb[$type],
@@ -193,6 +307,8 @@ class Home extends CI_Controller {
 			$content = $this->getContent($ct_id);
 			//获取栏目详情
 			$channel = $this->getChannel($content['cn_id']);
+
+			$this->title = $content['ct_title'] . ' | ' . $channel['cn_name'] . ' | ' . $this->title;
 			$data = array(
 				'type' => $type,
 				'breadcrumb' => $breadcrumb[$type],
@@ -233,7 +349,14 @@ class Home extends CI_Controller {
 	*/
 	public function about()
 	{
-		$this->load->view('home/v_about');
+		$this->title = '关于我们 | ' . $this->title;
+		$data = array(
+			'detail' => $this->getContent('532e4b77b35c8'),
+			'style' => $this->getContent('532e4f90468bc'),
+			'fac' => $this->getContent('532e4f74e76c2'),
+			'emp' => $this->getContent('532e4f538b530')
+			);
+		$this->load->view('home/v_about', $data);
 	}
 
 	/**
@@ -244,7 +367,12 @@ class Home extends CI_Controller {
 	*/
 	public function contact()
 	{
-		$this->load->view('home/v_contact');
+		$this->title = '联系我们 | ' . $this->title;
+		$cont = $this->getContent('532e569d0f2a9', 'ct_detail');
+		$data = array(
+			'cont' => $cont
+			);
+		$this->load->view('home/v_contact', $data);
 	}
 
 	/**
@@ -255,7 +383,57 @@ class Home extends CI_Controller {
 	*/
 	public function login()
 	{
+		$this->title = '登录注册 | ' . $this->title;
 		$this->load->view('home/v_login');
+	}
+
+	/**
+	* 找回密码
+	* ======
+	* @author 洪波
+	* @version 14.05.10
+	*/
+	public function findPassword()
+	{
+		if($account = $this->input->post('account'))
+		{
+			//检查账户是否存在
+			$this->load->model('User_model', 'user');
+			if($this->user->checkAccount($account))
+			{
+				echo '账号不存在.';
+			}
+			else
+			{
+				$new_password = $this->user->resetPassword($account);
+				if($new_password)
+				{
+					$this->load->library('email'); 
+	                //参数设置
+	                $config['protocol'] = 'smtp';
+	                $config['smtp_host'] = 'smtp.163.com';
+	                $config['smtp_user'] = 'ct880_colour';
+	                $config['smtp_pass'] = 'ct880@colour';
+	                $config['smtp_port'] = '25';
+	                $config['charset'] = 'utf-8';
+	                $config['wordwrap'] = TRUE;
+	                $config['mailtype'] = 'html';
+	                $this->email->initialize($config);
+	                //以下设置Email内容  
+	                $this->email->from('ct880_colour@163.com', $this->title);
+	                $this->email->to($account);
+	                $this->email->subject($this->title . '协助您找回用户密码.');
+	                $this->email->message('<p>您好！根据您的请求，我们已经为您重设了密码：'.$new_password.'，请您尽快登录后，并重新修改。</p>');
+	                $this->email->send();
+
+	                echo '新密码已经发往您的邮箱，请注意查收.';
+				}
+				else
+				{
+					echo '重置密码失败，请联系网站管理人员.';
+				}
+			}
+		}
 	}
 
 	/**
@@ -270,6 +448,8 @@ class Home extends CI_Controller {
 		{
 			$this->load->model('Order_model', 'order');
 			$shoppingcart = $this->order->getCartList(0, 100, $user_id);
+
+			$this->title = '询价单 | ' . $this->title;
 			$data = array(
 				'shoppingcart'=>$shoppingcart
 				);
@@ -290,6 +470,8 @@ class Home extends CI_Controller {
 			$this->load->model('User_model', 'user');
 			$users = $this->user->get($user_id);
 			$detail = $this->user->getDetail($user_id);
+
+			$this->title = '我的账户 | ' . $this->title;
 			$data = array(
 				'users' => $users,
 				'detail' => $detail
@@ -325,6 +507,8 @@ class Home extends CI_Controller {
 			$config['per_page'] = $limit;
 			$this->pagination->initialize($config);
 			$pages = $this->pagination->create_links();
+
+			$this->title = '我的询价单 | ' . $this->title;
 			$data = array(
 				'od_status' => $status,
 				'order_list' => $order_list['result'],
@@ -356,6 +540,8 @@ class Home extends CI_Controller {
 			$config['per_page'] = $limit;
 			$this->pagination->initialize($config);
 			$pages = $this->pagination->create_links();
+
+			$this->title = '我的收藏 | ' . $this->title;
 			$data = array(
 				'collection' => $collection['result'],
 				'pages' => $pages
@@ -372,6 +558,7 @@ class Home extends CI_Controller {
 	*/
 	public function my_safety()
 	{
+		$this->title = '安全设置 | ' . $this->title;
 		$this->load->view('home/v_my_safety');
 	}
 
@@ -381,6 +568,8 @@ class Home extends CI_Controller {
 		redirect('/');
 	}
 
+//==============================================
+//=============  后台统一调用方法  ===============
 //==============================================
 
 	/**
@@ -394,10 +583,25 @@ class Home extends CI_Controller {
 	* @author 洪波
 	* @version 14.02.09
 	*/
-	private function getChannnelList($offset, $limit, $cn_id, $fields = array())
+	private function getChannelList($offset, $limit, $cn_id, $fields = array())
 	{
 		$this->load->model('Channel_model', 'channel');
 		return $this->channel->getChildList($offset, $limit, array('cn_fid'=>$cn_id), $fields);
+	}
+
+	/**
+	* 获取自乱木列表 - 前端调用
+	* ======
+	* @param $offset 	起始位置
+	* @param $limit 	查询行数
+	* ======
+	* @author 洪波
+	* @version 14.05.10
+	*/
+	public function channelList($offset, $limit, $cn_id)
+	{
+		$rs = $this->getChannelList($offset, $limit, $cn_id);
+		echo json_encode($rs);
 	}
 
 	/**
@@ -425,10 +629,14 @@ class Home extends CI_Controller {
 	* @author 洪波
 	* @version 14.02.09
 	*/
-	private function getContentList($offset, $limit, $cn_id, $fields = array())
+	private function getContentList($offset, $limit, $cn_id, $ct_status = 1, $fields = array())
 	{
 		$this->load->model('Content_model', 'content');
-		return $this->content->getList($offset, $limit, array('cn_id'=>$cn_id), $fields);
+		$condition = array(
+			'cn_id' => $cn_id,
+			'ct_status' => $ct_status
+			);
+		return $this->content->getList($offset, $limit, $condition, $fields);
 	}
 
 	/**
@@ -464,6 +672,20 @@ class Home extends CI_Controller {
 	{
 		$this->load->model('Content_model', 'content');
 		return $this->content->get(array('ct_id'=>$ct_id), $fields);
+	}
+
+	/**
+	* 显示内容详情 - 前端调用
+	* ======
+	* @param $ct_id 	内容id
+	* ======
+	* @author 洪波
+	* @version 14.05.10
+	*/
+	public function showContent($ct_id)
+	{
+		$rs = $this->getContent($ct_id);
+		echo json_encode($rs);
 	}
 	
 	/**

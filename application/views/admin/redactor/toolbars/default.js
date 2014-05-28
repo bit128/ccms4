@@ -5,7 +5,7 @@ RTOOLBAR['default'] =
 	styles:
 	{ 
 		title: RLANG.styles,
-		func: 'show', 				
+		func: 'show',			
 		dropdown: 
 	    {
 			 p:
@@ -57,6 +57,12 @@ RTOOLBAR['default'] =
 			 	style: 'font-size: 16px; line-height: 26px;  font-weight: bold;'
 			 }					 														
 		},
+		separator: true
+	},
+	html:
+	{
+		title: RLANG.html,
+		func: 'toggle',
 		separator: true
 	},
 	bold:

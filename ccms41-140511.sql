@@ -68,7 +68,7 @@ CREATE TABLE `t_channel` (
 
 LOCK TABLES `t_channel` WRITE;
 /*!40000 ALTER TABLE `t_channel` DISABLE KEYS */;
-INSERT INTO `t_channel` VALUES ('1','0','website','网站根目录','',1358303465,1,1),('530029c52bcf6','530029a70dd5f','公司新闻','','',1392519621,1,1),('52f6fa53a0520','1','修行养生','','',1391917651,1,1),('52f720376e833','52f6fa53a0520','解决方案一','','',1391927351,1,1),('52f72044a723b','52f6fa53a0520','解决方案二','','',1391927364,2,1),('52f72045bb5f7','52f6fa53a0520','解决方案三','','',1391927365,3,1),('530029a70dd5f','1','新闻中心','','',1392519591,2,1),('530029d5db453','530029a70dd5f','产品动态','','',1392519637,2,1),('530029e02da06','530029a70dd5f','公司介绍','','',1392519648,3,1),('530029faed1a5','1','购买合作','','',1392519674,3,1),('53002a0996b76','530029faed1a5','常见问答','','',1392519689,1,1),('53002a182620e','530029faed1a5','支付相关','','',1392519704,2,1),('53002a273d223','530029faed1a5','加盟合作','','',1392519719,3,1);
+INSERT INTO `t_channel` VALUES ('1','0','website','网站根目录','',1358303465,1,1),('530029c52bcf6','530029a70dd5f','公司新闻','','',1392519621,1,1),('52f6fa53a0520','536d95c6cf841','修行养生','','/index.php/home/solution',1391917651,3,1),('5339320ab4640','52f6fa53a0520','这是栏目一','','',1396257290,1,1),('5339320c4ed7b','52f6fa53a0520','这是栏目二','','',1396257292,2,1),('5339320cd2472','52f6fa53a0520','这是栏目三','','',1396257292,3,1),('530029a70dd5f','536d95c6cf841','新闻中心','','/index.php/home/content/0/news/530029c52bcf6',1392519591,4,1),('530029d5db453','530029a70dd5f','产品动态','','',1392519637,2,1),('530029e02da06','530029a70dd5f','公司介绍','','',1392519648,3,1),('530029faed1a5','536d95c6cf841','购买合作','','/index.php/home/content/0/support/53002a0996b76',1392519674,5,1),('53002a0996b76','530029faed1a5','常见问答','','',1392519689,1,1),('53002a182620e','530029faed1a5','支付相关','','',1392519704,2,1),('53002a273d223','530029faed1a5','加盟合作','','',1392519719,3,1),('532e44796a9ef','536d92e793d76','首页幻灯','','',1395541113,1,1),('532e4affc0ed9','536d95c6cf841','关于我们','','/index.php/home/about',1395542783,6,1),('534a60c33f1c8','533a6bf49ed03','佛具佛珠','','#这里是连接',1397383363,1,1),('533a6bf49ed03','1','主线产品目录','','',1396337652,7,1),('534a60d4b9781','533a6bf49ed03','茶叶','','#这里是链接',1397383380,2,1),('534a60dea5e0a','533a6bf49ed03','山珍特产','','#这里是链接',1397383390,3,1),('534a60ec15091','533a6bf49ed03','工艺品','','#这里是链接',1397383404,4,1),('534a60f7a1959','533a6bf49ed03','文玩字画','','#这里是链接',1397383415,5,1),('534a657df2a0e','1','便捷链接','','',1397384573,8,1),('534a6586b738c','534a657df2a0e','新闻中心','','#链接',1397384582,1,1),('534a65a5cba13','534a657df2a0e','购买合作','','#',1397384613,2,1),('534a65c4abc03','534a657df2a0e','联系我们','','#',1397384644,3,1),('534a65ebeba42','534a657df2a0e','关于我们','','#',1397384683,4,1),('536d92e793d76','1','网站设置','','',1399689959,9,1),('536d930de0cea','536d92e793d76','网站logo','','',1399689997,2,1),('536d95c6cf841','1','首页栏目','','',1399690694,6,1),('536d95d174f43','536d95c6cf841','首页','','/',1399690705,1,1),('536d95e3b7014','536d95c6cf841','产品中心','','/index.php/home/product/0/0/0',1399690723,2,1),('536d963048b26','536d95c6cf841','联系我们','','/index.php/home/contact',1399690800,7,1),('536e034add95a','536d92e793d76','网站名称','','',1399718730,3,1);
 /*!40000 ALTER TABLE `t_channel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `t_content` (
 
 LOCK TABLES `t_content` WRITE;
 /*!40000 ALTER TABLE `t_content` DISABLE KEYS */;
-INSERT INTO `t_content` VALUES ('52f73eae2de87','52f720376e833','解决方案一下的内容1','解决方案一下的内容1-副标题','','解决方案一下的内容1-内容摘要','<p>Proin id condimentum sem. Morbi vitae dui in magna vestibulum suscipit vitae vel nunc. Integer ut risus nulla. malesuada tortor, nec scelerisque lorem mattis lore Aliquam at erat in purus aliquet mollis. Fusce elementum velit vel dolor iaculis egestas nullam vitae neque luctus. Omassa risus eget arcu. Sed ac porta felis. Vivamus dignissim varius augue ut tempor. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo.Donec quam felis, ultricies nec, pellentesque pretium quis, sem. Nulla consequat massa quis enim. Donec pe justo fringilla vel, aliquet nec vulputate eget, arcu enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felisa penelore mollis pretium.<br>\n\n<br>\n\nMauris aliquet ultricies ante, non faucibus ante gravida sed. Sed ultrices pellentesque purus, vulputate volutpat ipsum hendrerit sed neque sed sapien rutrum laoreet justo ultrices. In pellentesque lorem condimentum dui conse. Vivamus semper, mi sed congue semper, odio felis tristique neque, ac venenatis mauris augue adipiscing lectus.<br>\n\nAliquam interdum vehicula nulla et aliquam. Integer ornare euismod risus, vitae tristique leo fringilla in. Maecenas id nunc risus, sit amet sollicitudin odio. Praesent condimentum auctor est, eu euismod magna lobortis sit amet. Duis venenatis ligula id turpis ultrices auctor. Pellentesque viverra neque nisl. Cras pellentesque elit ac libero varius sed mattis lectus consectetur. Nulla eget arcu sit amet mi dignissim ultrices vitae et magna. Etiam accumsan est a nulla placerat egestas. Donec urna enim, aliquet at sodales eu, ultrices sit amet nunc. Aenean convallis facilisis sem, id placerat diam vestibulum phasellus vitae scelerisque.<span id=\"pastemarkerend\">&nbsp;</span></p>\n',1391935150,1),('52f73f3d0f601','52f720376e833','解决方案一下的内容2','解决方案一下的内容2 - 副标题','','解决方案一下的内容2 - 内容摘要','<p>Proin id condimentum sem. Morbi vitae dui in magna vestibulum suscipit vitae vel nunc. Integer ut risus nulla. malesuada tortor, nec scelerisque lorem mattis lore Aliquam at erat in purus aliquet mollis. Fusce elementum velit vel dolor iaculis egestas nullam vitae neque luctus. Omassa risus eget arcu. Sed ac porta felis. Vivamus dignissim varius augue ut tempor. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo. Proin urna diam ras venenatis, eros id congue pellent esque, risus leo.Donec quam felis, ultricies nec, pellentesque pretium quis, sem. Nulla consequat massa quis enim. Donec pe justo fringilla vel, aliquet nec vulputate eget, arcu enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felisa penelore mollis pretium.<br>\n\n<br>\n\nMauris aliquet ultricies ante, non faucibus ante gravida sed. Sed ultrices pellentesque purus, vulputate volutpat ipsum hendrerit sed neque sed sapien rutrum laoreet justo ultrices. In pellentesque lorem condimentum dui conse. Vivamus semper, mi sed congue semper, odio felis tristique neque, ac venenatis mauris augue adipiscing lectus.<br>\n\nAliquam interdum vehicula nulla et aliquam. Integer ornare euismod risus, vitae tristique leo fringilla in. Maecenas id nunc risus, sit amet sollicitudin odio. Praesent condimentum auctor est, eu euismod magna lobortis sit amet. Duis venenatis ligula id turpis ultrices auctor. Pellentesque viverra neque nisl. Cras pellentesque elit ac libero varius sed mattis lectus consectetur. Nulla eget arcu sit amet mi dignissim ultrices vitae et magna. Etiam accumsan est a nulla placerat egestas. Donec urna enim, aliquet at sodales eu, ultrices sit amet nunc. Aenean convallis facilisis sem, id placerat diam vestibulum phasellus vitae scelerisque.<span id=\"pastemarkerend\">&nbsp;</span></p>\n',1391935293,1),('52f745860158e','52f720376e833','111111','','','','<p>111</p>\n',1391936902,1),('52f7458f3115f','52f720376e833','22222','','','','<p>2222</p>\n',1391936911,1),('52f745a6519da','52f720376e833','333333','','','','<p>333333333</p>\n',1391936934,1),('52f745b2b9c5d','52f720376e833','444444','','','','<p>44444</p>\n',1391936946,1),('530030db37e06','530029c52bcf6','公司新闻内容','','','','<p>哈哈</p>\n',1392521435,1);
+INSERT INTO `t_content` VALUES ('536d93a25c2d1','536d930de0cea','网站logo设置','','536d933ee507d.png','您可以修改，但请不要直接删除！ 最佳尺寸125px × 44px，透明背景png格式  ','',1399690477,1),('534a66e2cedd4','532e4affc0ed9','联系信息','','','','<p>\n邮件: <a rel=\"tooltip\" href=\"http://newsite.local/index.php/home/contact#\" data-original-title=\"欢迎您联系我 !\">Jiangjiefei@outlook.com</a> <br>\n\n电话: +86 0566 5111719<br>\n\n</p>\n\n            <p>公司地址 <br>\n\n <a rel=\"tooltip\" href=\"http://newsite.local/index.php/home/contact#\" data-original-title=\"地址\">安徽省池州市青阳县蓉城镇陵阳路</a><br>\n\n             <a rel=\"tooltip\" href=\"http://newsite.local/index.php/home/contact#\" data-original-title=\"工作时间\">周一至周五: 早上09:00 - 下午18:00</a><span id=\"pastemarkerend\"></span></p>\n',1397384930,1),('533a6c9e112b8','533a6bf49ed03','文玩字画','','','','<p>这里是文玩字画的内容</p>\n',1396337822,1),('533a6cb024845','533a6bf49ed03','工艺品','','','','<p>这里是工艺品的内容</p>\n',1396337840,1),('533a6cc7312e6','533a6bf49ed03','山珍特产','','','','<p>这里是山珍特产的内容</p>\n',1396337863,1),('533a6cdadb7a3','533a6bf49ed03','茶叶','','','','<p>这里是茶叶的内容</p>\n',1396337882,1),('533a6d1541591','533a6bf49ed03','佛珠佛具','','','','<p>这里是佛珠佛具的详细内容</p>\n',1396337941,1),('533932a2ba30c','5339320c4ed7b','这里是栏目二','','5339329e0c05f.jpg','','<p>This is a example of style component for calling extra attention to \nfeatured content or information. This is a example of style component \nfor calling extra attention to featured content or information. This is a\n example of style component for calling extra attention to featured \ncontent or information. This is a example of style component for calling\n extra attention to featured content or information.<span id=\"pastemarkerend\"> 222</span></p>\n',1396332923,2),('533932d168ca6','5339320cd2472','这是栏目三','','533932cc936af.jpg','','<p>This is a example of style component for calling extra attention to \nfeatured content or information. This is a example of style component \nfor calling extra attention to featured content or information. This is a\n example of style component for calling extra attention to featured \ncontent or information. This is a example of style component for calling\n extra attention to featured content or information.<span id=\"pastemarkerend\"> 333</span></p>\n',1396332933,2),('533a5a9f1d9a2','5339320c4ed7b','这里是栏目二的展示内容2','','','','<p>这里是展示内容</p>\n',1396333215,1),('533a5318625f4','5339320ab4640','这是栏目页的展示内容1','','','','<p>内容详情</p>\n',1396331288,1),('533a5330047be','5339320ab4640','这是栏目页的展示内容2','','','','<p>这是内容详情</p>\n',1396331312,1),('533a53487869c','5339320ab4640','这里是栏目页的展示内容3','','','','<p>这里是呢容</p>\n',1396331672,1),('533a5a8b0488b','5339320c4ed7b','这里是栏目二的展示内容1','','','','<p>这里是展示内容</p>\n',1396333195,1),('533932834c885','5339320ab4640','这里是栏目一','','5339327fc4397.jpg','','<p>This is a example of style component for calling extra attention to \nfeatured content or information. This is a example of style component \nfor calling extra attention to featured content or information. This is a\n example of style component for calling extra attention to featured \ncontent or information. This is a example of style component for calling\n extra attention to featured content or information.<span id=\"pastemarkerend\"> 11<br>\n</span></p>\n',1396331922,2),('530030db37e06','530029c52bcf6','公司新闻内容','','','','<p>哈哈</p>\n',1394278554,2),('531b00c536335','530029c52bcf6','第二条公司新闻','','','','<p>这里是内容</p>\n',1394279242,2),('531b00de2c855','530029d5db453','新产品发布了','','','','<p>嗯是要发布了</p>\n',1394278622,2),('531b00fc1f30b','530029d5db453','又是一个新产品要发布了','','','','<p>对了，就是这个样子</p>\n',1394278652,1),('531b02817b326','53002a0996b76','测试','','','','<p>测试的内容</p>\n',1394279041,1),('532e4535a515d','532e44796a9ef','banner-1','#这里是链接','532e452952b98.jpg','','',1395541860,1),('532e454bc7f69','532e44796a9ef','banner-2','#这里是链接','532e4547ba92c.jpg','','',1395541872,1),('532e4562ec768','532e44796a9ef','banner-3','#这里是链接','532e455e99a79.jpg','','',1395541883,1),('532e4b77b35c8','532e4affc0ed9','公司简介','','532e4b4e79f27.jpg','九华阁贸易有限公司地处中国四大佛教名山之一的九华山，当地景色秀丽，人杰地灵，长年受佛家文化熏陶，人文淳朴，一派忠厚景象。每年吸引数百万中外游客来此驻足观光，参禅礼佛，流连忘返。\n我们秉着以诚待客，广结善缘的心态，长期经营批发各色九华山开光佛珠，佛具，手链饰品，品种材质包含檀木、砗磲、玛瑙、水晶、菩提子等。并有九华山当地土特产供君选购，产品有九华佛茶，黄石溪毛峰茶，笋干，九华冰姜，石耳等食品和九华折扇等工艺品。','<p> 九华阁贸易有限公司地处中国四大佛教名山之一的九华山，当地景色秀丽，人杰地灵，长年受佛家文化熏陶，人文淳朴，一派忠厚景象。每年吸引数百万中外游客来此驻足观光，参禅礼佛，流连忘返。</p>\n\n<p>我们秉着以诚待客，广结善缘的心态，长期经营批发各色九华山开光佛珠，佛具，手链饰品，品种材质包含檀木、砗磲、玛瑙、水晶、菩提子等。并有九华山当地土特产供君选购，产品有九华佛茶，黄石溪毛峰茶，笋干，九华冰姜，石耳等食品和九华折扇等工艺品。<span id=\"pastemarkerend\">&nbsp;</span></p>\n',1395542903,1),('532e4f538b530','532e4affc0ed9','员工风采','#这里是链接地址','532e4f442bbc4.png','','',1395543891,1),('532e4f74e76c2','532e4affc0ed9','工厂参观','#这里是链接地址','532e4f6a34b81.png','','',1395543924,1),('532e4f90468bc','532e4affc0ed9','公司风貌','#这里是链接地址','532e4f8cba2bc.png','','',1395543952,1),('532e569d0f2a9','532e4affc0ed9','联系我们','','','','\n<ul>\n\n	<li>电话: +86 056 6511 1719</li>\n\n	<li>电子邮箱: <a href=\"mailto:jiangjiefei@hotmail.com\">jiangjiefei@hotmail.com</a></li>\n\n	<li>传真: +86 056 6511 1719</li>\n\n	<li>业务地址： 安徽省池州市青阳县蓉城镇陵阳路134号</li>\n\n	<li>工厂地址： 安徽省九华山柯村新区<span id=\"pastemarkerend\">&nbsp;</span></li></ul>\n',1395545757,1),('536e037497e9c','536e034add95a','彩网贸易CCMS','','','','',1399718923,1);
 /*!40000 ALTER TABLE `t_content` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +240,7 @@ CREATE TABLE `t_order` (
 
 LOCK TABLES `t_order` WRITE;
 /*!40000 ALTER TABLE `t_order` DISABLE KEYS */;
-INSERT INTO `t_order` VALUES ('1403011414522853',80868378,14650.00,2,'留言: 使用精美包装',1393654492,0,0),('1403011459347736',80868378,300.00,3,'留言: 随便什么包装',1393657174,0,0),('1403011500274393',80868378,17580.00,2,'留言: 没有什么可说的',1393657227,0,0);
+INSERT INTO `t_order` VALUES ('1403011414522853',80868378,14650.00,2,'留言: 使用精美包装',1393654492,0,1),('1403011459347736',80868378,300.00,3,'留言: 随便什么包装',1393657174,0,0),('1403011500274393',80868378,17581.00,2,'留言: 没有什么可说的',1393657227,0,1),('1404122114518139',80868378,43450.00,1,'留言: ',1397308491,0,1);
 /*!40000 ALTER TABLE `t_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,8 +269,37 @@ CREATE TABLE `t_product` (
 
 LOCK TABLES `t_product` WRITE;
 /*!40000 ALTER TABLE `t_product` DISABLE KEYS */;
-INSERT INTO `t_product` VALUES ('528dc651773bf','新款macbook pro','mac1024','528b605272647',8,1392869701,1),('528d7c4071878','漂亮的马克杯','x0028193','528b6088a0142',32,1393034106,1);
+INSERT INTO `t_product` VALUES ('528dc651773bf','新款macbook pro','mac1024','528b605272647',25,1392869701,1),('528d7c4071878','漂亮的马克杯','x0028193','528b6088a0142',61,1393034106,1);
 /*!40000 ALTER TABLE `t_product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_product_annex`
+--
+
+DROP TABLE IF EXISTS `t_product_annex`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_product_annex` (
+  `pda_id` char(13) NOT NULL,
+  `pd_id` char(13) NOT NULL,
+  `pda_name` varchar(64) NOT NULL,
+  `pda_src` varchar(20) NOT NULL,
+  `pda_type` varchar(20) NOT NULL,
+  `pda_time` int(11) NOT NULL,
+  `pda_status` tinyint(4) NOT NULL,
+  PRIMARY KEY (`pda_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_product_annex`
+--
+
+LOCK TABLES `t_product_annex` WRITE;
+/*!40000 ALTER TABLE `t_product_annex` DISABLE KEYS */;
+INSERT INTO `t_product_annex` VALUES ('533274b5504b2','528d7c4071878','资料下载','533274b1dcc1e.pdf','applicatio',1395815605,1),('533274c179e58','528d7c4071878','产品手册','533274bf8b17b.pdf','applicatio',1395815617,1);
+/*!40000 ALTER TABLE `t_product_annex` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -324,6 +353,33 @@ INSERT INTO `t_product_image` VALUES ('53095c9719469.jpg','528d7c4071878',4),('5
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_product_question`
+--
+
+DROP TABLE IF EXISTS `t_product_question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `t_product_question` (
+  `pdq_id` char(13) NOT NULL,
+  `pd_id` char(13) NOT NULL,
+  `pdq_question` varchar(255) NOT NULL,
+  `pdq_answer` text NOT NULL,
+  `pdq_status` tinyint(4) NOT NULL,
+  PRIMARY KEY (`pdq_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_product_question`
+--
+
+LOCK TABLES `t_product_question` WRITE;
+/*!40000 ALTER TABLE `t_product_question` DISABLE KEYS */;
+INSERT INTO `t_product_question` VALUES ('532edb60b0c53','528d7c4071878','这是第二个嘛','我又不知道了蛮，xixi',0),('532e96b5eabab','528d7c4071878','第二个常见问题2','这里是问题答案2',1);
+/*!40000 ALTER TABLE `t_product_question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `t_shopping_cart`
 --
 
@@ -349,7 +405,7 @@ CREATE TABLE `t_shopping_cart` (
 
 LOCK TABLES `t_shopping_cart` WRITE;
 /*!40000 ALTER TABLE `t_shopping_cart` DISABLE KEYS */;
-INSERT INTO `t_shopping_cart` VALUES ('53117abc90168','528d7c4071878','1403011414522853',80868378,'528dbfa8500a2',10,1393654460,2),('53117ac48bcf3','528dc651773bf','1403011414522853',80868378,'528dc70b6ad3e',10,1393654468,2),('53118548688b7','528d7c4071878','1403011459347736',80868378,'528dbfa8500a2',12,1393657160,2),('531185732c5f1','528dc651773bf','1403011500274393',80868378,'528dc70b6ad3e',12,1393657203,2),('531185795f024','528d7c4071878','1403011500274393',80868378,'528dbfa8500a2',12,1393657209,2),('5311cbf39d642','528d7c4071878','',80868378,'528dbfa8500a2',10,1393675251,0),('5311a8adc7bec','528dc651773bf','',80868378,'528dc70b6ad3e',18,1393666221,0),('5311cc0667a81','528dc651773bf','',80868378,'528dc675090f6',12,1393675270,0),('5311cc08cef02','528dc651773bf','',80868378,'528dc675090f6',12,1393675272,1);
+INSERT INTO `t_shopping_cart` VALUES ('53117abc90168','528d7c4071878','1403011414522853',80868378,'528dbfa8500a2',10,1393654460,2),('53117ac48bcf3','528dc651773bf','1403011414522853',80868378,'528dc70b6ad3e',10,1393654468,2),('53118548688b7','528d7c4071878','1403011459347736',80868378,'528dbfa8500a2',12,1393657160,2),('531185732c5f1','528dc651773bf','1403011500274393',80868378,'528dc70b6ad3e',12,1393657203,2),('531185795f024','528d7c4071878','1403011500274393',80868378,'528dbfa8500a2',12,1393657209,2),('5311cbf39d642','528d7c4071878','1404122114518139',80868378,'528dbfa8500a2',10,1393675251,2),('5311a8adc7bec','528dc651773bf','1404122114518139',80868378,'528dc70b6ad3e',18,1393666221,2),('5311cc0667a81','528dc651773bf','1404122114518139',80868378,'528dc675090f6',12,1393675270,2),('5311cc08cef02','528dc651773bf','',80868378,'528dc675090f6',12,1393675272,1);
 /*!40000 ALTER TABLE `t_shopping_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,9 +419,7 @@ DROP TABLE IF EXISTS `t_storage`;
 CREATE TABLE `t_storage` (
   `st_id` char(13) NOT NULL,
   `pd_id` char(13) NOT NULL,
-  `st_unit` varchar(10) NOT NULL,
-  `st_colour` char(8) NOT NULL,
-  `st_size` varchar(10) NOT NULL,
+  `st_name` varchar(32) NOT NULL,
   `st_quantity` int(11) NOT NULL,
   `st_inprice` float(8,2) NOT NULL,
   `st_outprice` float(8,2) NOT NULL,
@@ -382,7 +436,7 @@ CREATE TABLE `t_storage` (
 
 LOCK TABLES `t_storage` WRITE;
 /*!40000 ALTER TABLE `t_storage` DISABLE KEYS */;
-INSERT INTO `t_storage` VALUES ('528dbf72c62e6','528d7c4071878','kg','红','12*12',0,0.00,0.00,1.00,1385021298,0),('528dbf9947c3d','528d7c4071878','kg','红','12*12',0,0.00,0.00,1.00,1385021337,0),('528dbfa8500a2','528d7c4071878','kg','红','12*12',120,17.80,25.00,1.00,1385266093,1),('528dc675090f6','528dc651773bf','个','白','13寸',10,1280.00,1440.00,0.98,1385099186,1),('528dc70b6ad3e','528dc651773bf','个','白','11寸',20,1310.00,1440.00,0.75,1385104226,1);
+INSERT INTO `t_storage` VALUES ('536d8ae28c679','528d7c4071878','景德镇上等白瓷',0,0.00,0.00,1.00,1399687906,0),('536d8af04e8ed','528d7c4071878','官窑钧瓷',0,0.00,0.00,1.00,1399687920,0),('536d8b3cd1612','528dc651773bf','13寸mac64G版',10,1280.00,1680.00,1.00,1399689306,1),('536d8b49f2340','528dc651773bf','13寸mac128G版',8,1560.00,1960.00,1.00,1399689307,1),('536d8b566bbc9','528dc651773bf','11寸64G版',9,860.00,1260.00,1.00,1399689062,0);
 /*!40000 ALTER TABLE `t_storage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,7 +467,7 @@ CREATE TABLE `t_storage_record` (
 
 LOCK TABLES `t_storage_record` WRITE;
 /*!40000 ALTER TABLE `t_storage_record` DISABLE KEYS */;
-INSERT INTO `t_storage_record` VALUES ('528effb2c2546','528dc651773bf','528effb2c2538',1,'添加库存条目',0,0.00,1385103282,'hongbo'),('528f0017d40dd','528dc651773bf','528effb2c2538',2,'删除库存条目',0,0.00,1385103383,'hongbo'),('528f00e6d35f8','528dc651773bf','528dc70b6ad3e',3,'库存采购',25,1320.00,1385103590,'hongbo'),('528f00f896a77','528dc651773bf','528dc70b6ad3e',4,'常规出库',5,1310.00,1385103608,'hongbo'),('528f0245951b7','528dc651773bf','528dc70b6ad3e',7,'折扣变动',0,0.00,1385103941,'hongbo'),('528f0261ad7ce','528dc651773bf','528dc70b6ad3e',6,'售价变动',0,0.00,1385103969,'hongbo'),('528f0362cdd04','528dc651773bf','528dc70b6ad3e',7,'折扣变动',0,0.75,1385104226,'hongbo'),('52917ba13dd0d','528d7c4071878','528dbfa8500a2',3,'库存采购',120,17.80,1385266081,'hongbo'),('52917bad3e96e','528d7c4071878','528dbfa8500a2',6,'售价变动',0,25.00,1385266093,'hongbo');
+INSERT INTO `t_storage_record` VALUES ('536d8ae28c69d','528d7c4071878','536d8ae28c679',1,'添加库存条目',0,0.00,1399687906,'hongbo'),('536d8af04e90a','528d7c4071878','536d8af04e8ed',1,'添加库存条目',0,0.00,1399687920,'hongbo'),('536d8b3cd162e','528dc651773bf','536d8b3cd1612',1,'添加库存条目',0,0.00,1399687996,'hongbo'),('536d8b49f2362','528dc651773bf','536d8b49f2340',1,'添加库存条目',0,0.00,1399688009,'hongbo'),('536d8b566bbec','528dc651773bf','536d8b566bbc9',1,'添加库存条目',0,0.00,1399688022,'hongbo'),('536d8e0239193','528dc651773bf','536d8b3cd1612',3,'库存采购',10,1280.00,1399688706,'hongbo'),('536d8e2c805c0','528dc651773bf','536d8b49f2340',3,'库存采购',6,1560.00,1399688748,'hongbo'),('536d8eb22c578','528dc651773bf','536d8b566bbc9',3,'库存采购',12,860.00,1399688882,'hongbo'),('536d8eedc8aac','528dc651773bf','536d8b3cd1612',6,'售价变动',0,1680.00,1399688941,'hongbo'),('536d8ef38e53e','528dc651773bf','536d8b49f2340',6,'售价变动',0,1960.00,1399688947,'hongbo'),('536d8ef958040','528dc651773bf','536d8b566bbc9',6,'售价变动',0,1260.00,1399688953,'hongbo'),('536d8f05205d3','528dc651773bf','536d8b3cd1612',4,'常规出库',2,1.00,1399688965,'hongbo'),('536d8f5eec558','528dc651773bf','536d8b49f2340',4,'常规出库',4,1560.00,1399689054,'hongbo'),('536d8f66b91dd','528dc651773bf','536d8b566bbc9',4,'常规出库',3,860.00,1399689062,'hongbo'),('536d8f75a837e','528dc651773bf','536d8b3cd1612',3,'库存采购',2,1280.00,1399689077,'hongbo'),('536d8f7eb8d9b','528dc651773bf','536d8b49f2340',3,'库存采购',6,1560.00,1399689086,'hongbo');
 /*!40000 ALTER TABLE `t_storage_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,7 +494,7 @@ CREATE TABLE `t_target` (
 
 LOCK TABLES `t_target` WRITE;
 /*!40000 ALTER TABLE `t_target` DISABLE KEYS */;
-INSERT INTO `t_target` VALUES ('53045365388ed','0','按材质分',1392792421,0),('5304537045363','0','按尺寸分',1392792432,0),('53045388da9ac','53045365388ed','小叶紫檀',1392792456,0),('5304539e48f28','53045365388ed','桃木',1392792478,6),('530453aa0f0d0','53045365388ed','玛瑙',1392792490,2),('530453adeb95d','53045365388ed','水晶',1392792493,0),('530453b58044b','53045365388ed','金丝楠',1392792501,0),('530453ca23688','5304537045363','20m',1392792522,2),('530453cd68827','5304537045363','18m',1392792525,1),('530453d280394','5304537045363','6m',1392792530,2);
+INSERT INTO `t_target` VALUES ('53045365388ed','0','按材质分',1392792421,0),('5304537045363','0','按尺寸分',1392792432,0),('53045388da9ac','53045365388ed','小叶紫檀',1392792456,0),('5304539e48f28','53045365388ed','桃木',1392792478,6),('530453aa0f0d0','53045365388ed','玛瑙',1392792490,2),('530453adeb95d','53045365388ed','水晶',1392792493,0),('530453b58044b','53045365388ed','金丝楠',1392792501,0),('530453ca23688','5304537045363','20m',1392792522,2),('530453cd68827','5304537045363','18m',1392792525,1),('530453d280394','5304537045363','6m',1392792530,2),('5313f8686f8f1','0','按用途分',1393817704,0),('5313f8727fb53','5313f8686f8f1','车饰',1393817714,0);
 /*!40000 ALTER TABLE `t_target` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -500,7 +554,7 @@ CREATE TABLE `t_user` (
 
 LOCK TABLES `t_user` WRITE;
 /*!40000 ALTER TABLE `t_user` DISABLE KEYS */;
-INSERT INTO `t_user` VALUES (80868378,'hongerbo@qq.com','202cb962ac59075b964b07152d234b70','啵啵牛','default.jpg',1,0,0,1393140449,1393725822,9,'127.0.0.1',2);
+INSERT INTO `t_user` VALUES (80868378,'hongerbo@qq.com','202cb962ac59075b964b07152d234b70','啵啵牛','default.jpg',1,0,0,1393140449,1399723178,15,'127.0.0.1',1);
 /*!40000 ALTER TABLE `t_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -543,4 +597,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-02 19:18:35
+-- Dump completed on 2014-05-11 16:52:08

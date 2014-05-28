@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>New Site</title>
+    <title>欢迎使用CCMS彩网后台内容管理系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,9 +28,8 @@
                     <legend>基本信息</legend>
                     <p>
                       <span class="btn-group" id="user_status">
-                        <a class="btn btn-small <?php if($user['user_status'] == 1) echo 'btn-primary';?>">平台</a>
-                        <a class="btn btn-small <?php if($user['user_status'] == 2) echo 'btn-primary';?>">站内</a>
-                        <a class="btn btn-small <?php if($user['user_status'] == 3) echo 'btn-primary';?>">高级</a>
+                        <a class="btn btn-small <?php if($user['user_status'] == 1) echo 'btn-primary';?>">普通</a>
+                        <a class="btn btn-small <?php if($user['user_status'] == 2) echo 'btn-primary';?>">高级</a>
                       </span>
                     </p>
                     <hr>

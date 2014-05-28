@@ -33,7 +33,7 @@ class Storage_model extends CI_Model {
 	*/
 	public function getAttributes()
 	{
-		return array('st_id', 'pd_id', 'st_unit', 'st_colour', 'st_size', 'st_quantity', 'st_inprice', 'st_outprice', 'st_discount', 'st_utime', 'st_status');
+		return array('st_id', 'pd_id', 'st_name', 'st_quantity', 'st_inprice', 'st_outprice', 'st_discount', 'st_utime', 'st_status');
 	}
 
 	/**
@@ -44,14 +44,12 @@ class Storage_model extends CI_Model {
 	* @author 洪波
 	* @version 13.11.21
 	*/
-	public function create($pd_id, $st_unit, $st_size, $st_colour)
+	public function create($pd_id, $st_name, $st_unit, $st_size, $st_colour)
 	{
 		$data = array(
 			'st_id' => uniqid(),
 			'pd_id' => $pd_id,
-			'st_unit' => $st_unit,
-			'st_colour' => $st_colour,
-			'st_size' => $st_size,
+			'st_name' => $st_name,
 			'st_quantity' => 0,
 			'st_inprice' => 0.00,
 			'st_outprice' => 0.00,
