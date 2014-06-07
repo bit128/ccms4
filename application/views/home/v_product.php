@@ -73,7 +73,7 @@
 </div>
 
 	<!-- Portfolio Content -->
-	<div id="#portfolio-wrapper">
+	<div id="#portfolio-wrapper"  class="clearfix">
 		
 		<?php if($product_list){ foreach($product_list as $v) { ?>
 		<div class="one-third column portfolio-item">

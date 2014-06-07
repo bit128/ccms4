@@ -56,6 +56,15 @@ $(document).ready(function(){
 			html += '<li><a href="'+d.cn_url+'">'+d.cn_name+'</a></li>';
 		});
 		$('#nav').html(html);
+		//设置导航的自适应性
+		(function() {
+			selectnav('nav', {
+				label: 'Menu',
+				nested: true,
+				indent: '-'
+			});
+					
+		})();
 	});
 	/*主线产品目录*/
 	$.get('/index.php/home/channelList/0/16/533a6bf49ed03', function(data){
@@ -89,7 +98,7 @@ $(document).ready(function(){
 		$('#contact_mess').html(html);
 	});
 	/*页脚信息*/
-	$.get('/index.php/home/showContent/5378973785f68', function(data){
+	$.get('/index.php/home/showContent/537dad7fac67f', function(data){
 		var d = $.parseJSON(data);
 		$('#footer_content').html(d.ct_detail);
 	});

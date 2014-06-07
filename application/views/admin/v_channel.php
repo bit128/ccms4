@@ -28,6 +28,7 @@
           <div class="well">
             <ul id="tree" class="ztree"></ul>
           </div>
+          <p class="text-warning"><small>请注意“站点信息内容管理”中为了扩展维护的便利性，用户权限是完全开放的，因此可以自由扩建删除文件夹及文件内容，但请不要删除我们技术人员已经为您初始设置好的主目录。如需更多帮助，</small><a target="_blank" href="http://www.ct880.com/contact.html">请点击联系我们</a></p>
         </div>
       </div>
 

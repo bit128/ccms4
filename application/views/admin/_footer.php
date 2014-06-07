@@ -1,4 +1,4 @@
 <hr>
 <footer>
-    <p>&copy; Copyright 2012 - 2013 by Colour Web Studio | <strong>CCMS v4.1 alpha</strong> 沪ICP备12039151号-1 </p>
+    <p>&copy; Copyright 2010 - 2014 by Colour Web Studio | <strong> Power for CCMS v4.1 beta</strong> 皖ICP备11004466号-2 </p>
 </footer>

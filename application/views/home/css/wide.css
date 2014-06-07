@@ -3,7 +3,7 @@
 ====================================================================== */
 
 	body {
-		background: #fff ;
+		background: #fff;
 		font: 12px Arial, sans-serif;
 		color: #666;
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
@@ -13,11 +13,11 @@
 	 }
 	 
 	#wrapper {
-		background: #fff /*url(../images/whole-bg.jpg) no-repeat center -25px */;
+		background: #fff;
 		-webkit-box-shadow: none;
 		box-shadow: none;
 		width: 100%;
-		padding: 25px 0 35px 0;
+		padding: 15px 0 35px 0;
 		margin: 0 auto;
 	}
 	

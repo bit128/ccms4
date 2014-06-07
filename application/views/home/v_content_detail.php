@@ -63,7 +63,10 @@
 
 <!-- Sidebar
 ================================================== -->
-<div class="four columns">    	
+<div class="four columns">    
+
+
+	
 	<!-- Popular Posts -->
 	<div class="widget-alt">
 		<div class="headline no-margin"><h4>热销产品</h4></div>
@@ -86,10 +89,11 @@
 <div class="post-meta"><span><i class="mini-ico-calendar"></i>日期 <?php echo date('Y-m-d', $content['ct_ctime']); ?></span></div>
 
 	<?php echo $content['ct_detail']; ?>
-    
-	<ul class="pagination">
-    	<a href="javascript:history.go(-1);"><li>返回上一页</li></a>
+    <div  class="pagination">
+	<ul>
+    	<li><a href="javascript:history.go(-1);">返回上一页</a></li>
     </ul>
+	</div>
 
 
 </div>

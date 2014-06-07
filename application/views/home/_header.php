@@ -8,8 +8,8 @@
 <!-- CSS
 ================================================== -->
 <link rel="stylesheet" type="text/css" href="<?php echo VIEWPATH; ?>/home/css/style.css" />
-<link rel="stylesheet" type="text/css" href="<?php echo VIEWPATH; ?>/home/css/boxed.css" id="layout" />
-<link rel="stylesheet" type="text/css" href="<?php echo VIEWPATH; ?>/home/css/colors/beige.css" id="colors" />
+<link rel="stylesheet" type="text/css" href="<?php echo VIEWPATH; ?>/home/css/wide.css" id="layout" />
+<link rel="stylesheet" type="text/css" href="<?php echo VIEWPATH; ?>/home/css/colors/blue.css" id="colors" />
 
 <!-- Java Script
 ================================================== -->

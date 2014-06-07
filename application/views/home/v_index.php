@@ -67,9 +67,7 @@
 	<!-- 1/3 Columns -->
 	<div class="eight columns">
 		<div class="headline"><h3>公司简介</h3></div>
-		<p><?php echo $detail['ct_summary']; ?></p>
-		<p>…… <a href="<?php echo site_url('home/about'); ?>">更多信息 <i class="mini-ico-chevron-right"></i></a> 
-        </p>
+		<p><?php echo $detail['ct_summary']; ?> …… <a href="<?php echo site_url('home/about'); ?>">更多信息 <i class="mini-ico-chevron-right"></i></a> </p>
 	</div>
 	
     	
@@ -84,21 +82,11 @@
 		<!-- Tabs Content -->
 		<div class="tabs-container">
 			<div class="tab-content" id="tab1">
-            <ul class="links-list-alt" id="ne_1">
-				<li><a href="List-content.html"><span>2013-03-16</span> 九华阁香港贸易博览会展会通知</a></li>
-				<li><a href="List-content.html"><span>2013-03-16</span> 有关紫檀木原材料价格上涨问题</a></li>
-                <li><a href="List-content.html"><span>2013-03-16</span> 有关紫檀木原材料价格上涨问题</a></li>
-				<li><a href="List-content.html"><span>2013-03-16</span> 2013年春节放假通知</a></li>
-			</ul>
+            <ul class="links-list-alt" id="ne_1"></ul>
            <ul class="plus_list"> <li><a href="<?php echo site_url('home/content'); ?>/0/news/530029c52bcf6">更多信息</a></li></ul>
             </div>
 			<div class="tab-content" id="tab2">
-            <ul class="links-list-alt" id="ne_2">
-				<li><a href="List-content.html"><span>2013-03-16</span> 绝对不可多得，仅此一串，极品小叶紫檀，只展不卖</a></li>
-                <li><a href="List-content.html"><span>2013-03-16</span> 有关最近科檀以此充好的辨别方法</a></li>
-                <li><a href="List-content.html"><span>2013-03-16</span> 有关最近科檀以此充好的辨别方法</a></li>
-                <li><a href="List-content.html"><span>2013-03-16</span> 原料出售，品种繁多，具体点我来看。</a></li>
-			</ul>
+            <ul class="links-list-alt" id="ne_2"></ul>
            <ul class="plus_list"> <li><a href="<?php echo site_url('home/content'); ?>/0/news/530029d5db453">更多信息</a></li></ul>
             </div>
             
@@ -138,6 +126,7 @@
 <!-- Footer / End -->
 <script type="text/javascript" src="<?php echo VIEWPATH; ?>/home/js/product_express.js"></script>
 <script type="text/javascript" src="<?php echo VIEWPATH; ?>/home/js/news_express.js"></script>
+<script type="text/javascript" src="<?php echo VIEWPATH; ?>/home/js/datetime.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	(function() {
@@ -166,11 +155,11 @@ $(document).ready(function(){
 	});
 	//公司新闻
 	new NewsExpress($('#ne_1'), '530029c52bcf6', 4).getList(function(d){
-		return '<li><a href="/index.php/home/content_detail/news/'+d.ct_id+'">'+d.ct_title+'</a></li>';
+		return '<li><a href="/index.php/home/content_detail/news/'+d.ct_id+'"><span>'+(new Datetime(d.ct_ctime).ymd(1))+'</span> '+d.ct_title.substring(0, 26)+'</a></li>';
 	});
 	//产品动态
 	new NewsExpress($('#ne_2'), '530029d5db453', 4).getList(function(d){
-		return '<li><a href="/index.php/home/content_detail/news/'+d.ct_id+'">'+d.ct_title+'</a></li>';
+		return '<li><a href="/index.php/home/content_detail/news/'+d.ct_id+'"><span>'+(new Datetime(d.ct_ctime).ymd(1))+'</span> '+d.ct_title.substring(0, 26)+'</a></li>';
 	});
 });
 </script>

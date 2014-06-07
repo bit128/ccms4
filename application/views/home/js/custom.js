@@ -25,7 +25,8 @@ jQuery(document).ready(function() {
 		
 	})();
 	
-	/* Responsive Menu */
+	/* Menu自适应（被移到异步完成目录加载的函数中） */
+	/*
 	(function() {
 		selectnav('nav', {
 			label: 'Menu',
@@ -33,8 +34,7 @@ jQuery(document).ready(function() {
 			indent: '-'
 		});
 				
-	})();
-
+	})();*/
 
 /*----------------------------------------------------*/
 /*	Image Overlay

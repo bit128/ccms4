@@ -258,6 +258,8 @@ class Home extends CI_Controller {
 	*/
 	public function content($offset, $type, $cn_id)
 	{
+		$this->load->model('Content_model', 'content');
+
 		$breadcrumb = $this->content_breadcrumb;
 		//获取栏目详情
 		$channel = $this->getChannel($cn_id);
@@ -265,7 +267,7 @@ class Home extends CI_Controller {
 		$channel_list = $this->getChannelList(0, 20, $channel['cn_fid'], 'cn_id,cn_name');
 		//获取栏目下内容列表
 		$content_limit = 12;
-		$content_list = $this->getContentList($offset, $content_limit, $cn_id, 1, 'ct_id,ct_title,ct_ctime');
+		$content_list = $this->content->getList($offset, $content_limit, "cn_id = '{$cn_id}' AND ct_status != 0", 'ct_id,ct_title,ct_ctime');
 		$this->load->library('pagination');
 		$config['base_url'] = site_url('home/content');
         $config['suffix'] = '/'.$type.'/'.$cn_id;
@@ -368,7 +370,7 @@ class Home extends CI_Controller {
 	public function contact()
 	{
 		$this->title = '联系我们 | ' . $this->title;
-		$cont = $this->getContent('532e569d0f2a9', 'ct_detail');
+		$cont = $this->getContent('532e569d0f2a9', 'ct_image, ct_detail');
 		$data = array(
 			'cont' => $cont
 			);

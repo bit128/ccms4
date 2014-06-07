@@ -43,7 +43,7 @@
 	
 		<!-- Page Title -->
 		<div id="page-title">
-			<h2><a href="/">首页</a> <span>/ 修行养生</span></h2>
+			<h2><a href="/">首页</a> <span>/ 产品应用</span></h2>
 			<div id="bolded-line"></div>
 		</div>
 		<!-- Page Title / End -->

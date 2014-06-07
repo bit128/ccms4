@@ -129,7 +129,7 @@ $(document).ready(function(){
   /*删除库存*/
   $('#storage_list').on('click', '.storage_delete', function(){
     var tr = $(this).parents('tr');
-    if(tr.find('td:eq(4)').text() == '0'){
+    if(tr.find('td:eq(2)').text() == '0'){
       var st_id = tr.find('td:eq(0)').text();
       $.ajax({
         type: 'POST',

@@ -166,8 +166,8 @@
 			<div class="tab-content" id="tab2">
              <ul class="lister3">
 		        <li id="pdq_list">
-		        	<h4><i class="mini-ico-question-sign"></i> when customers submit their answer, we thank them ?</h4>
-					<p>Proin iaculis purus consequat stitor gravida.</p></li>
+		        	<h4><i class="mini-ico-question-sign"></i> 常见问答问题 ?</h4>
+					<p>该产品还没有相关的常见问答</p></li>
                 </ul>
             </div>
 			<div class="tab-content" id="tab3">

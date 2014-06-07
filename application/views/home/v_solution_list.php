@@ -43,7 +43,7 @@
 	
 		<!-- Page Title -->
 		<div id="page-title">
-			<h2><a href="/">首页</a> <span>/ <a href="<?php echo site_url('home/solution'); ?>">修行养生</a>
+			<h2><a href="/">首页</a> <span>/ <a href="<?php echo site_url('home/solution'); ?>">产品应用</a>
 				<?php echo $breadcrumb; ?></h2>
 			<div id="bolded-line"></div>
 		</div>
@@ -100,7 +100,7 @@
            <div class="lister2 row">
 	<?php if($content_list != 0){ echo '<ul>'; foreach($content_list as $v) { ?>
 	<li><a href="<?php echo site_url('home/solution_list'), '/', $cn_id, '/', $v['ct_id']; ?>">
-		<span>2014-04-01</span> <?php echo $v['ct_title']; ?></a></li>
+		<span><?php echo date('Y-m-d', $v['ct_ctime']); ?></span> <?php echo $v['ct_title']; ?></a></li>
 	<?php } echo '</ul>'; }else{ echo $content['ct_detail']; } ?>
 <div class="clear"></div>
 </div>

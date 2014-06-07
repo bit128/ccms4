@@ -129,7 +129,9 @@
 
 		<div class="headline low-margin"><h4>公司地址</h4></div>
 		
-		<!-- Google Maps -->
+		<img alt="公司地图" src="/uploads/content/<?php echo $cont['ct_image']; ?>" style=" width:235px">
+		
+		<!-- Google Maps 
 		<div id="googlemaps" class="google-map google-map-full" style="height:200px"></div>
 
 		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
@@ -150,7 +152,7 @@
 			],
 			
 		});
-		</script>
+		</script>-->
 		
 	</div>
 		

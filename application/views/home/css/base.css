@@ -145,7 +145,7 @@
 
 /* #Links
 ================================================== */
-	a, a:visited {color: #c99d4b; text-decoration: none; outline: 0; -webkit-transition: color 0.1s ease-in-out; -moz-transition: color 0.1s ease-in-out; -o-transition: color 0.1s ease-in-out; -transition: color 0.1s ease-in-out;}
+	a, a:visited {color: #2db2ea; text-decoration: none; outline: 0; -webkit-transition: color 0.1s ease-in-out; -moz-transition: color 0.1s ease-in-out; -o-transition: color 0.1s ease-in-out; -transition: color 0.1s ease-in-out;}
 	a:hover, a:focus { color: #888; }
 	p a, p a:visited { line-height: inherit; }
 
@@ -207,9 +207,7 @@
 		font-weight: bold;
 		font-size: 12px; 
 		font-weight: normal;
-		margin-bottom: 8px;
-		/*float:left; padding:5px; width:60px;*/}
-	
+		margin-bottom: 8px;}
 	select {
 		 }
 	input[type="checkbox"] {
@@ -234,5 +232,3 @@
 	
 	.float-left{ float:left;}
 	.float-right{ float:right;}
-	
-	
