@@ -24,7 +24,7 @@
 		<!-- Footer / Bottom -->
 		<div class="sixteen columns">
 			<div id="footer-bottom">
-				<div id="footer_content"></div>
+				<div id="footer_content"> Powered by  <a href="http://www.ct880.com/" target="_blank">Color Web Studio</a></div>
 				<div id="scroll-top-top"><a href="#"></a></div>
 			</div>
 		</div>
@@ -100,7 +100,7 @@ $(document).ready(function(){
 	/*页脚信息*/
 	$.get('/index.php/home/showContent/537dad7fac67f', function(data){
 		var d = $.parseJSON(data);
-		$('#footer_content').html(d.ct_detail);
+		$('#footer_content').prepend(d.ct_detail);
 	});
 })
 </script>

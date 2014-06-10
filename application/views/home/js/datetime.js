@@ -21,6 +21,11 @@ var Datetime = function(time) {
 		this.date.getMinutes(),
 		this.date.getSeconds()
 	];
+	for(var i=0; i<6; ++i) {
+		if(this.dates[i] < 10) {
+			this.dates[i] = '0' + this.dates[i];
+		}
+	}
 	//格式符
 	this.formats = [
 		['-', '-', ' ', ':', ':', ''],

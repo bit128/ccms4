@@ -211,6 +211,7 @@ $(document).ready(function(){
         var op = $('#op').val();
         var st_price = $('#st_price').val();
         var st_quantity = $('#st_quantity').val();
+        if(! /^\d+$/.exec(st_quantity)) {alert('请填写整数');$('#st_quantity').focus();return;}
         if(op == '0' && (quantity - st_quantity) < 0){
           alert('库存不足以出库数量.');
           return;

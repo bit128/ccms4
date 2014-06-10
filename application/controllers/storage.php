@@ -22,7 +22,7 @@ class Storage extends CI_Controller {
 	* @author 洪波
 	* @version 13.11.21
 	*/
-	public function storageList($offset = '0', $pd_id = '0', $order = '0')
+	public function storageList($offset = '0', $pd_id = '0', $order = '1')
 	{
 		if($this->admin->validate(16))
 		{

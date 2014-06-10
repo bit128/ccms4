@@ -378,6 +378,18 @@ class Home extends CI_Controller {
 	}
 
 	/**
+	* 切换语言 - 页面
+	* ======
+	* @author 洪波
+	* @version 14.06.10
+	*/
+	public function language()
+	{
+		$this->title = '切换语言 | ' . $this->title;
+		$this->load->view('home/v_language');
+	}
+
+	/**
 	* 登录注册 - 页面
 	* ======
 	* @author 洪波

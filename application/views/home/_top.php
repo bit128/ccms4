@@ -19,6 +19,7 @@
 					<li><i class="mini-ico-user"></i><a href="<?php echo site_url('home/login'); ?>">登录 / 注册</a> </li>
 					<li><i class="mini-ico-th-list"></i> <a href="<?php echo site_url('home/login'); ?>">查看询价单</a></li>
 				<?php } ?>
+				<li><i class="mini-ico-flag"></i> <a href="<?php echo site_url('home/language'); ?>">切换语言</a></li>
 			</ul>
 		</div>
 
