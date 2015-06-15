@@ -260,7 +260,7 @@ $(document).ready(function(){
       html += ' <a class="btn btn-mini btn-danger pda_remove" data-val="'+d.pda_id+'">删除</a></td></tr>';
       return html;
   });
-  productAnnex.addItem($('#pda_add'));
+  productAnnex.addItem($('#pda_add'), $('#annex_upload'));
   productAnnex.bindEvent();
 });
 </script>

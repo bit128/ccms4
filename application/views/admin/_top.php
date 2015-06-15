@@ -9,7 +9,7 @@
           <a class="brand" href="javascript:;">CTS商贸管理系统</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              <a href="javascript:;" class="navbar-link"><i class="icon-user icon-white"></i> <?php echo $this->session->userdata('am_account'); ?></a> |
+              <a href="<?php echo site_url('admin/adminHome'); ?>" class="navbar-link"><i class="icon-user icon-white"></i> <?php echo $this->session->userdata('am_account'); ?></a> |
               <a href="<?php echo site_url('admin/logout'); ?>" class="navbar-link">注销</a>
             </p>
             <ul class="nav">

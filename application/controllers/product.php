@@ -463,7 +463,6 @@ class Product extends CI_Controller {
 			$offset = $this->input->post('offset');
 			$limit = $this->input->post('limit');
 			$pda_status = $this->input->post('pda_status');
-
 			echo json_encode($this->product->getAnnexList($offset, $limit, $pd_id, $pda_status));
 		}
 	}

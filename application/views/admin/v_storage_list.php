@@ -35,7 +35,9 @@
           <?php foreach ($storage as $v) { ?>
           <tr>
             <td><?php echo $v['st_id']; ?></td>
-            <td><?php echo $v['st_name']; ?></td>
+            <td>
+              <a href="javascript:;" class="storage_update" data-val="st_name"><?php echo $v['st_name']; ?></a>
+            </td>
             <td><?php echo $v['st_quantity']; ?></td>
             <td><?php echo $v['st_inprice']; ?></td>
             <td>

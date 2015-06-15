@@ -257,5 +257,8 @@ class User extends CI_Controller {
 			echo $this->user->updateDetail($user_id, $data);
 		}
 	}
+	
+	public function deleteUser()
+	{}
 
 }

@@ -13,11 +13,13 @@ ProductAnnex.prototype = {
 			url: '/index.php/product/getAnnexList',
 			data: {offset: 0, limit: 10, pd_id: f.pd_id, pda_status: -1},
 			success: function(data){
-				var datas = $.parseJSON(data);
 				var html = '';
-				$.each(datas.result, function(i, d){
-					html += f.render(d);
-				});
+				if(data != '[]' && data != ''){
+					var datas = $.parseJSON(data);
+						$.each(datas.result, function(i, d){
+						html += f.render(d);
+					});
+				}
 				f.handle.html(html);
 			}
 		});
@@ -51,11 +53,11 @@ ProductAnnex.prototype = {
 			}
 		});
 	},
-	addItem: function(){
+	addItem: function(handle, uf_handle){
 		var f = this;
-		if(f.pd_id != ''){
-			//异步上传文件
-			$('#annex_upload').on('change', '#annex_file', function(){
+		//异步上传文件
+		uf_handle.on('change', '#annex_file', function(){
+			if(f.pd_id != ''){
 				$.ajaxFileUpload({
 				    url: '/index.php/product/uploadFile',
 				    fileElementId: 'annex_file',
@@ -65,9 +67,13 @@ ProductAnnex.prototype = {
 					    $('#pda_type').val(data.type);
 				    }
 			    });
-			});
-			//提交数据
-			$('#pda_add').on('click', function(){
+			}else{
+				alert('请先添加或选择一个商品');
+			}
+		});
+		//提交数据
+		handle.on('click', function(){
+			if(f.pd_id != ''){
 				var pda_name = $('#pda_name').val();
 				if(pda_name == ''){alert('请填写附件名称');$('#pda_name').focus();return;}
 				var pda_src = $('#pda_src').val();
@@ -86,9 +92,9 @@ ProductAnnex.prototype = {
 						}
 					}
 				});
-			});
-		}else{
-			alert('请先添加或选择一个商品');
-		}
+			}else{
+				alert('请先添加或选择一个商品');
+			}
+		});
 	}
 };

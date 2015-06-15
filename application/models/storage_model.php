@@ -175,7 +175,7 @@ class Storage_model extends CI_Model {
 			'sr_detail' => $this->storage_record[$sr_type],
 			'sr_quantity' => $sr_quantity,
 			'sr_price' => $sr_price,
-			'am_account' => 'hongbo',
+			'am_account' => $this->session->userdata('am_account'),
 			'sr_time' => time()
 			);
 		return $this->db->insert('t_storage_record', $data);

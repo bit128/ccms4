@@ -13,14 +13,14 @@ ProductQuestion.prototype = {
 			url: '/index.php/product/getQuestionList',
 			data: {pd_id: f.pd_id, pdq_status: -1},
 			success: function(data){
-				if(data != '[]'){
+				var html = '';
+				if(data != '[]' && data != ''){
 					var datas = $.parseJSON(data);
-					var html = '';
 					$.each(datas, function(i, d){
 						html += f.render(d);
 					});
-					f.handle.html(html);
 				}
+				f.handle.html(html);
 			}
 		});
 	},

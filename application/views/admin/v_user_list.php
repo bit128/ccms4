@@ -39,7 +39,7 @@
                 <th>积分</th>
                 <th>累计积分</th>
                 <th>状态</th>
-                <th>操作</th>
+                <th style="width:80px;">操作</th>
               </tr>
             </thead>
             <tbody id="user_list" class="f_tiny">
@@ -56,7 +56,10 @@
                   case 1: echo '普通'; break;
                   case 2: echo '高级'; break;
                 }?></td>
-                <td><a class="btn btn-mini" href="<?php echo site_url('user/userDetail'), '/', $v['user_id']; ?>">详情</a></td>
+                <td>
+                  <a class="btn btn-mini" href="<?php echo site_url('user/userDetail'), '/', $v['user_id']; ?>">详情</a>
+                  <a class="btn btn-mini btn-danger" href="<?php echo site_url('user/userDetail'), '/', $v['user_id']; ?>">删除</a>
+                </td>
               </tr>
               <?php } ?>
             </tbody>

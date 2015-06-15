@@ -7,7 +7,7 @@
 */
 class Admin extends CI_Controller {
 
-	public $nav_index = 64;
+	public $nav_index = 70;
 
 	public function __construct()
 	{

@@ -23,6 +23,7 @@
             <th>数量变动</th>
             <th>价格/折扣变动</th>
             <th>操作员</th>
+            <th style="width:80px;"></th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +34,9 @@
             <td><?php echo $v['sr_quantity']; ?></td>
             <td><?php echo $v['sr_price']; ?></td>
             <td><?php echo $v['am_account']; ?></td>
+            <td>
+              <a href="<?php echo site_url('storage/storageList'), '/0/', $v['pd_id']; ?>" class="btn btn-mini">商品库存列表</a>
+            </td>
           </tr>
           <?php } ?>
         </tbody>
