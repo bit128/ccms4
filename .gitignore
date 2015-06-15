@@ -1,2 +1,3 @@
 #git要忽略的文件
 .DS_Store
+uploads
